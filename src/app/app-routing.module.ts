@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'loginuser',
+    loadChildren: () => import('./pages/loginuser/loginuser.module').then( m => m.LoginuserPageModule)
+  },
 ];
 
 @NgModule({
