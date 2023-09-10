@@ -1,16 +1,36 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ForgotpassPageModule } from './pages/forgotpass/forgotpass.module';
+import { RegisteruserPageModule } from './pages/registeruser/registeruser.module';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registerbase',
+    loadChildren: () => import('./pages/registerbase/registerbase.module').then( m => m.RegisterbasePageModule)
+  },
+  {
+    path: 'forgotpass',
+    loadChildren: () => import('./pages/forgotpass/forgotpass.module').then( m => m.ForgotpassPageModule)
+  },
+  {
+    path: 'registeruser',
+    loadChildren: () => import('./pages/registeruser/registeruser.module').then( m => m.RegisteruserPageModule)
+  },
+    
 ];
 
 @NgModule({

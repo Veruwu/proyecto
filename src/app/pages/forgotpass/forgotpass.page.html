@@ -1,0 +1,22 @@
+
+
+<app-encabezado titulo="Cambiar contraseña"></app-encabezado>
+
+<ion-content class="ion-padding">
+  <form #passform="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="full">
+      <ion-input label="E-mail" labelPlacement="floating"required type="email" name="email" placeholder="Ingrese su E-mail" aria-label="email"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Send</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <small>
+      Please provide the username or email address that you used when you signed
+      up for your Evernote account.
+    </small>
+  </form>
+</ion-content>

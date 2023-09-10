@@ -12,6 +12,9 @@ export class HomePage {
     password:''
    }
 
-  constructor() {}
+  constructor(private router:Router) {}
 
+  onClick(ruta:string){
+    this.router.navigate(['/'+ruta])
+  }
 }
