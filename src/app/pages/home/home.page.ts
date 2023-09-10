@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  usuario={
+    username:'',
+    password:''
+   }
 
-  constructor( private router:Router) {}
+  constructor() {}
 
-  navegar(ruta:string){
-    this.router.navigate(['/'+ruta])
-  }
 }

@@ -1,21 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Fastic
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-button (click)="navegar('')" expand="block" fill="clear" shape="round">
-    Driver
-  </ion-button>
-  <ion-button (click)="navegar('loginuser')" expand="block" fill="clear" shape="round">
-    User
-  </ion-button>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="auth-form" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/registerbase']" expand="block" color="primary">Register</ion-button>
+        <span class="divider line one-line">or</span>
+        <span class="already">Already a user?</span>
+        <ion-button [routerLink]="['/login']" expand="block" color="danger">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+>>>>>>> Stashed changes
 </ion-content>
