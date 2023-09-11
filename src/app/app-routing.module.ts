@@ -29,7 +29,27 @@ const routes: Routes = [
   {
     path: 'registeruser',
     loadChildren: () => import('./pages/registeruser/registeruser.module').then( m => m.RegisteruserPageModule)
+  },  {
+    path: 'tab-inicial',
+    loadChildren: () => import('./pages/tab-inicial/tab-inicial.module').then( m => m.TabInicialPageModule)
   },
+  {
+    path: 'inicio-cliente',
+    loadChildren: () => import('./pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule)
+  },
+  {
+    path: 'perfilcliente',
+    loadChildren: () => import('./pages/perfilcliente/perfilcliente.module').then( m => m.PerfilclientePageModule)
+  },
+  {
+    path: 'notificaciones',
+    loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+  },
+  {
+    path: 'actividad',
+    loadChildren: () => import('./pages/actividad/actividad.module').then( m => m.ActividadPageModule)
+  },
+
     
 ];
 

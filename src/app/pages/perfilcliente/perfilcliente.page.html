@@ -1,0 +1,54 @@
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title>José</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-button size="large" fill="clear">
+            <ion-icon slot="start" name="card-outline"></ion-icon>
+            Billetera</ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="file-tray-full-outline"></ion-icon>
+          <ion-label>Actividad</ion-label></ion-button>
+          
+        </ion-item>
+  
+        <ion-item>
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>Configuración</ion-label></ion-button>
+          
+        </ion-item>
+  
+        <ion-item>
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="help-outline"></ion-icon>
+          <ion-label>Ayuda</ion-label></ion-button>
+          
+        </ion-item>
+
+        <ion-item>
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="information-circle-outline"></ion-icon>
+          <ion-label>Legal</ion-label></ion-button>
+          
+        </ion-item>
+        <ion-item>
+          <ion-button (click)="onClick('/home')" size="large" fill="clear"><ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label>Cerrar sesión</ion-label></ion-button>
+          
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
