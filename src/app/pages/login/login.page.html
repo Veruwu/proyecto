@@ -3,18 +3,29 @@
 <ion-content class="ion-padding">
   <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
     <ion-item lines="full">
-      <ion-input label="E-mail" labelPlacement="floating" required type="email" name="email" placeholder="Ingrese su E-mail" aria-label="email"></ion-input>
+      <ion-input helperText="Enter a valid email"
+      errorText="Invalid email" 
+      label="E-mail" 
+      labelPlacement="floating" 
+      required type="email" 
+      name="email" 
+      placeholder="Ingrese su E-mail" 
+      aria-label="email" 
+      [(ngModel)]="usuario.username"
+      ngModel
+      email>
+    </ion-input>
       
     </ion-item>
-
+    
     <ion-item lines="full">
-      <ion-input label="Contraseña" aria-label="password" labelPlacement="floating" required type="password" name="password" placeholder="Ingrese su contraseña"></ion-input>
+      <ion-input label="Contraseña" aria-label="password" labelPlacement="floating" required type="password" name="password" placeholder="Ingrese su contraseña" [(ngModel)]="usuario.password"></ion-input>
       
     </ion-item>
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
+        <ion-button type="submit" color="danger" expand="block" [disabled]="miformulario.invalid">Sign In</ion-button>
         <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
       </ion-col>
     </ion-row>

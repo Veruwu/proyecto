@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registeruser</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-encabezado titulo="Registro"></app-encabezado>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registeruser</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content class="ion-padding">
+  <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="full">
+      
+      <ion-input  type="name" [clearInput]="true" label="First name" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+     
+      <ion-input [clearInput]="true" label="Last name" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      
+      <ion-input type="email" [clearInput]="true" label="Email" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      
+      <ion-input type="password" [clearInput]="true" label="Password" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" [disabled]="miformulario.invalid">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

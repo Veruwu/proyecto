@@ -8,6 +8,7 @@ import { InicioClientePageRoutingModule } from './inicio-cliente-routing.module'
 
 import { InicioClientePage } from './inicio-cliente.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
