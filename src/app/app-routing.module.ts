@@ -49,6 +49,10 @@ const routes: Routes = [
     path: 'actividad',
     loadChildren: () => import('./pages/actividad/actividad.module').then( m => m.ActividadPageModule)
   },
+  {
+    path: 'registerdriver',
+    loadChildren: () => import('./pages/registerdriver/registerdriver.module').then( m => m.RegisterdriverPageModule)
+  },
 
     
 ];

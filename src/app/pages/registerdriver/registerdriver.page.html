@@ -1,0 +1,64 @@
+<app-encabezado titulo="Registro Conductor"></app-encabezado>
+
+<ion-content class="ion-padding">
+  <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
+
+    <ion-item lines="full">
+      <ion-label>Nombre</ion-label>
+      <input type="text">
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Apellido</ion-label>
+      <input type="text">
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Fecha de nacimiento</ion-label>
+        <input type="date" name="Calendario">
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Correo</ion-label>
+     <input type="email">
+    </ion-item>
+    
+    <ion-item lines="full">
+      <ion-label>Contraseña</ion-label>
+      <input type="password">
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label>Repetir contraseña</ion-label>
+      <input type="password">
+    </ion-item>
+
+    <ion-item lines="full">
+    <ion-label>Tipo de auto</ion-label>
+      <ion-select slot="end" value="Microurbano" multiple="false" placeholder="Select Microurbano">
+        <ion-select-option value="Microurbano">Microurbano</ion-select-option>
+        <ion-select-option value="Todoterreno">Todoterreno</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>Matricula</ion-label>
+      <input type="text">
+    </ion-item>
+    
+    <ion-item lines="full">
+      <ion-label>Asientos</ion-label>
+      <input type="number">
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>Estoy de acuerdo con los terminos y condiciones</ion-label>
+    </ion-item>
+    
+    <ion-button  type="submit" expand="full" color="tertiary">
+      Registrarse
+    </ion-button>
+
+  </form>
+</ion-content>
