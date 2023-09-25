@@ -1,0 +1,28 @@
+<app-encabezado titulo="Registro"></app-encabezado>
+
+
+<ion-content class="ion-padding">
+  <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="full">
+      
+      <ion-input  type="name" [clearInput]="true" label="First name" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+     
+      <ion-input [clearInput]="true" label="Last name" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      
+      <ion-input type="email" [clearInput]="true" label="Email" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      
+      <ion-input type="password" [clearInput]="true" label="Password" labelPlacement="floating" ></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" [disabled]="miformulario.invalid">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
