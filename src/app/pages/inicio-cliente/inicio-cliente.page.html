@@ -23,9 +23,13 @@
               <ion-input label="Ingrese punto de partida" label-placement="floating" [clearInput]="true" placeholder=""></ion-input>
             </ion-item>
           
-            <div class="ion-padding">
+            <ion-item lines="full">
               <ion-input label="¿A dónde vas?" label-placement="floating" [clearInput]="true" placeholder=""></ion-input>
-            </div>        
+            </ion-item>
+              
+            <ion-button (click)="onSubmit()" and expand="block" fill="clear" shape="round">
+              Buscar
+            </ion-button>       
           </ion-list>
             <div class="ion-padding" class="map">
     <img class="animate__animated animate__slideInUp" alt="mapa" src="https://previews.123rf.com/images/katrink03/katrink031701/katrink03170100006/69540924-ilustraci%C3%B3n-del-vector-mapa-de-la-ciudad-con-calles-casas-un-r%C3%ADo-y-un-parque.jpg" />
@@ -54,8 +58,8 @@
               <ion-input label="¿A dónde vas?" label-placement="floating" [clearInput]="true" placeholder=""></ion-input>
             </ion-item>
               
-            <ion-button (click)="onSubmit()" expand="block" fill="clear" shape="round">
-              Click me
+            <ion-button (click)="onSubmit()" and expand="block" fill="clear" shape="round">
+              Crear
             </ion-button>     
           </ion-list>
             <div class="ion-padding" class="map">
