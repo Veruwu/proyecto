@@ -53,6 +53,10 @@ const routes: Routes = [
     path: 'registerdriver',
     loadChildren: () => import('./pages/registerdriver/registerdriver.module').then( m => m.RegisterdriverPageModule)
   },
+  {
+    path: 'viaje',
+    loadChildren: () => import('./pages/viaje/viaje.module').then( m => m.ViajePageModule)
+  },
 
     
 ];

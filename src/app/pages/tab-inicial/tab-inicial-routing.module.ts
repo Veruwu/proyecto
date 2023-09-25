@@ -17,8 +17,8 @@ const routes: Routes = [
         loadChildren: () => import('./../../pages/perfilcliente/perfilcliente.module').then( m => m.PerfilclientePageModule)
       },
       {
-        path: 'notificaciones',
-        loadChildren: () => import('./../../pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+        path: 'viaje',
+        loadChildren: () => import('./../../pages/viaje/viaje.module').then( m => m.ViajePageModule)
       },
       {
         path: 'actividad',

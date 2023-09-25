@@ -17,6 +17,7 @@ export class PerfilclientePage implements OnInit {
   }
     isModalOpen = false;
     isModalOpen2 = false;
+    isModalOpen3 = false;
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
@@ -25,6 +26,10 @@ export class PerfilclientePage implements OnInit {
   setOpen2(isOpen: boolean) {
     this.isModalOpen2 = isOpen;
 }
+
+  setOpen3(isOpen: boolean) {
+    this.isModalOpen3 = isOpen;
+  }
 
 features: any[] = [
   {id: 1, name: 'Agregar tarjeta', src: 'assets/icons/top-up.png', background: 'rgba(27,150,181, 0.1)', page: ''},

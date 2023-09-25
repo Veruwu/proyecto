@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Viaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div  class="content">
+
+    <ion-list >  
+      <div>
+        
+        <ion-item lines="none" class="type">
+          <ion-icon size="large" name="car-outline"></ion-icon>
+          <ion-label>
+            Hyundai Atos 2021
+            <p>
+              <ion-text>
+               ( 2 / 4 )
+              </ion-text>
+            </p>
+          </ion-label>
+        </ion-item>
+  
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="full">
+              
+                <ion-icon slot="start" name="arrow-forward-outline"></ion-icon>
+              
+              <ion-label>Duoc UC</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="full">
+              
+                <ion-icon slot="start" name="arrow-down-outline"></ion-icon>
+              
+              <ion-label>Florida</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row>
+          <ion-item lines="full">
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Olivia Flores</ion-label>
+          </ion-item>
+          
+          <ion-item lines="full">
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Juan Lopez</ion-label>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-icon slot="start" name="person-add"></ion-icon>
+            <ion-label>Agregar pasajero</ion-label>
+          </ion-item>
+          
+          <ion-item lines="full">
+            <ion-icon slot="start" name="person-add"></ion-icon>
+            <ion-label>Agregar pasajero</ion-label>
+          </ion-item>
+        </ion-row>
+  
+        <ion-row class="ion-padding">
+          <ion-col size="12">
+            <ion-button expand="block" class="boton" color="primary">Iniciar Viaje</ion-button>
+          </ion-col>
+          <ion-col size="12">
+          <ion-button expand="block" class="boton" color="danger">Cancelar Viaje</ion-button>
+
+          </ion-col>
+          
+        </ion-row>
+      
+   
+      </div>
+  
+    </ion-list>
+    
+
+  </div>
+</ion-content>

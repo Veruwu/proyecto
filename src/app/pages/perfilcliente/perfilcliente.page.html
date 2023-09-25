@@ -103,9 +103,27 @@
         </ion-item>
 
         <ion-item>
-          <ion-button (click)="onClick('/tab-inicial/actividad')" size="large" fill="clear"><ion-icon slot="start" name="file-tray-full-outline"></ion-icon>
-          <ion-label>Actividad</ion-label></ion-button>
-          
+          <ion-button (click)="setOpen3(true)" size="large" fill="clear"><ion-icon slot="start" name="notifications-outline"></ion-icon>
+          <ion-label>Notificaciones</ion-label></ion-button>
+          <ion-modal  [isOpen]="isModalOpen3">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Notificaciones</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen3(false)">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              
+              <ion-content [fullscreen]="true">
+                
+              
+                <div  class="content"></div>
+              </ion-content>
+              
+            </ng-template>
+          </ion-modal>
         </ion-item>
   
         <ion-item>
