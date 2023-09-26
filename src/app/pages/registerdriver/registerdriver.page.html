@@ -4,37 +4,34 @@
   <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
 
     <ion-item lines="full">
-      <ion-label>Nombre</ion-label>
-      <input type="text">
+      <ion-input name="nombre">Nombre</ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Apellido</ion-label>
-      <input type="text">
+      <ion-input>Apellido</ion-input>
+      
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Fecha de nacimiento</ion-label>
-        <input type="date" name="Calendario">
+      <ion-input type="date" name="Calendario">Fecha de nacimiento</ion-input>
+    
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Correo</ion-label>
-     <input type="email">
+      <ion-input type="email">Correo</ion-input>
+  
     </ion-item>
     
     <ion-item lines="full">
-      <ion-label>Contraseña</ion-label>
-      <input type="password">
+      <ion-input type="password">Contraseña</ion-input>
     </ion-item>
   
     <ion-item lines="full">
-      <ion-label>Repetir contraseña</ion-label>
-      <input type="password">
+      <ion-input type="password">Repetir contraseña</ion-input>
     </ion-item>
 
     <ion-item lines="full">
-    <ion-label>Tipo de auto</ion-label>
+      <ion-label>Tipo de auto</ion-label>
       <ion-select slot="end" value="Microurbano" multiple="false" placeholder="Select Microurbano">
         <ion-select-option value="Microurbano">Microurbano</ion-select-option>
         <ion-select-option value="Todoterreno">Todoterreno</ion-select-option>
@@ -42,13 +39,13 @@
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Matricula</ion-label>
-      <input type="text">
+      <ion-input type="text">Matricula</ion-input>
+      
     </ion-item>
     
     <ion-item lines="full">
-      <ion-label>Asientos</ion-label>
-      <input type="number">
+      <ion-input type="number">Asientos</ion-input>
+      
     </ion-item>
 
     <ion-item lines="full">
