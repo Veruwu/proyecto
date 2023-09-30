@@ -4,33 +4,27 @@
   <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
 
     <ion-item lines="full">
-      <ion-label>Nombre</ion-label>
-      <input type="text">
+      <ion-input type="text" required label="Nombre" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Apellido</ion-label>
-      <input type="text">
+      <ion-input type="text" label="Apellido" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Fecha de nacimiento</ion-label>
-        <input type="date" name="Calendario">
+      <ion-input type="date" required label="Fecha de Nacimiento" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Correo</ion-label>
-     <input type="email">
+      <ion-input type="email" required label="Correo" labelPlacement="floating"></ion-input>
     </ion-item>
     
     <ion-item lines="full">
-      <ion-label>Contraseña</ion-label>
-      <input type="password">
+      <ion-input type="password" required label="Contraseña" labelPlacement="floating"></ion-input>
     </ion-item>
   
     <ion-item lines="full">
-      <ion-label>Repetir contraseña</ion-label>
-      <input type="password">
+      <ion-input type="password" required label="Repetir Contraseña" labelPlacement="floating"></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -42,21 +36,19 @@
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label>Matricula</ion-label>
-      <input type="text">
+      <ion-input type="text" required label="Matricula" labelPlacement="floating"></ion-input>
     </ion-item>
     
     <ion-item lines="full">
-      <ion-label>Asientos</ion-label>
-      <input type="number">
+      <ion-input type="number" required label="Asientos Disponibles" labelPlacement="floating"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-checkbox slot="start"></ion-checkbox>
+    <ion-item lines="full" class="ion-padding">
+      <ion-checkbox required slot="start"></ion-checkbox>
       <ion-label>Estoy de acuerdo con los terminos y condiciones</ion-label>
     </ion-item>
     
-    <ion-button  type="submit" expand="full" color="tertiary">
+    <ion-button class="ion-padding" type="submit" expand="full" color="tertiary">
       Registrarse
     </ion-button>
 
