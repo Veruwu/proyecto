@@ -32,4 +32,7 @@ export class InicioClientePage implements OnInit {
     this.router.navigate(['/tab-inicial/viaje']);
   }
 
+  onClick(ruta:string){
+    this.router.navigate(['/'+ruta])
+  }
 }
