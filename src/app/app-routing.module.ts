@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'viajedis',
     loadChildren: () => import('./pages/viajedis/viajedis.module').then( m => m.ViajedisPageModule)
   },
+  {
+    path: 'seguimiento',
+    loadChildren: () => import('./pages/seguimiento/seguimiento.module').then( m => m.SeguimientoPageModule)
+  },
 
     
 ];

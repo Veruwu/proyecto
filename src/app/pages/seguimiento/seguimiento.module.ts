@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ViajedisPageRoutingModule } from './viajedis-routing.module';
+import { SeguimientoPageRoutingModule } from './seguimiento-routing.module';
 
-import { ViajedisPage } from './viajedis.page';
+import { SeguimientoPage } from './seguimiento.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ViajedisPageRoutingModule,
+    SeguimientoPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [ViajedisPage]
+  declarations: [SeguimientoPage]
 })
-export class ViajedisPageModule {}
+export class SeguimientoPageModule {}

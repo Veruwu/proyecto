@@ -28,11 +28,7 @@
     </ion-item>
 
     <ion-item lines="full">
-    <ion-label>Tipo de auto</ion-label>
-      <ion-select slot="end" value="Microurbano" multiple="false" placeholder="Select Microurbano">
-        <ion-select-option value="Microurbano">Microurbano</ion-select-option>
-        <ion-select-option value="Todoterreno">Todoterreno</ion-select-option>
-      </ion-select>
+      <ion-toggle>Auto</ion-toggle><br /><br />
     </ion-item>
 
     <ion-item lines="full">
@@ -44,8 +40,8 @@
     </ion-item>
 
     <ion-item lines="full" class="ion-padding">
-      <ion-checkbox required slot="start"></ion-checkbox>
-      <ion-label>Estoy de acuerdo con los terminos y condiciones</ion-label>
+      <ion-checkbox labelPlacement="end">Estoy de acuerdo con los terminos y condiciones</ion-checkbox>
+      
     </ion-item>
     
     <ion-button class="ion-padding" type="submit" expand="full" color="tertiary">
