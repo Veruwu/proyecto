@@ -1,61 +1,56 @@
-<app-encabezado titulo="Registro"></app-encabezado>
+<app-encabezado titulo="Registrar"></app-encabezado>
 
 <ion-content class="ion-padding">
+
   <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
-
     <ion-item lines="full">
-      <ion-input name="nombre">Nombre</ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-input>Apellido</ion-input>
-      
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-input type="date" name="Calendario">Fecha de nacimiento</ion-input>
-    
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-input type="email">Correo</ion-input>
-  
-    </ion-item>
-    
-    <ion-item lines="full">
-      <ion-input type="password">Contraseña</ion-input>
+      <ion-input labelPlacement="floating" label="E-mail" required type="email" aria-label="Email" name="email" [(ngModel)]="conductor.email"></ion-input>
     </ion-item>
   
     <ion-item lines="full">
-      <ion-input type="password">Repetir contraseña</ion-input>
+      <ion-input labelPlacement="floating" label="Nombre" required type="text" aria-label="Nombre" name="nombre" [(ngModel)]="conductor.nombre"></ion-input>
     </ion-item>
-
+  
     <ion-item lines="full">
-      <ion-label>Tipo de auto</ion-label>
-      <ion-select slot="end" value="Microurbano" multiple="false" placeholder="Select Microurbano">
+      <ion-input labelPlacement="floating" label="Apellido" required type="text" aria-label="Apellido" name="Apellido" [(ngModel)]="conductor.apellido"></ion-input>
+    </ion-item>
+  
+   <ion-item lines="full">
+      <ion-input labelPlacement="floating" label="Fecha de Nacimiento" required type="Date" aria-label="fecha_nacimiento" name="fecha_nacimiento" [(ngModel)]="conductor.fecha_nacimiento" name="Calendario"></ion-input>
+    </ion-item>
+    
+    <ion-item lines="full">
+      <ion-input labelPlacement="floating" label="Contraseña" required type="password" aria-label="password" name="password" [(ngModel)]="conductor.password"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-input labelPlacement="floating" label="Repetir Contraseña" required type="password" aria-label="repit_password" name="repit_password" [(ngModel)]="repetirContrasena"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label>Tipo de Auto</ion-label>
+      <ion-select labelPlacement="floating" label="Tipo de Auto" required name="tipo_auto" [(ngModel)]="conductor.tipo_auto">
         <ion-select-option value="Microurbano">Microurbano</ion-select-option>
         <ion-select-option value="Todoterreno">Todoterreno</ion-select-option>
+        <ion-select-option value="Sedán">Sedán</ion-select-option>
+        <ion-select-option value="Camioneta">Camioneta</ion-select-option>
       </ion-select>
     </ion-item>
-
+  
     <ion-item lines="full">
-      <ion-input type="text">Matricula</ion-input>
-      
+      <ion-input labelPlacement="floating" label="Matricula" type="text" name="matricula" required [(ngModel)]="conductor.matricula"></ion-input>
     </ion-item>
-    
+  
     <ion-item lines="full">
-      <ion-input type="number">Asientos</ion-input>
-      
+      <ion-input labelPlacement="floating" label="Asientos" type="number" name="asientos" required placeholder="" [(ngModel)]="conductor.asientos"></ion-input>
     </ion-item>
-
+  
     <ion-item lines="full">
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Estoy de acuerdo con los terminos y condiciones</ion-label>
+      <ion-checkbox slot="start" name="condiciones" required>Estoy de acuerdo con los términos y condiciones </ion-checkbox>
     </ion-item>
-    
-    <ion-button  type="submit" expand="full" color="tertiary">
+  
+    <ion-button type="submit" expand="full" color="tertiary" [disabled]="miformulario.invalid">
       Registrarse
     </ion-button>
-
   </form>
 </ion-content>
