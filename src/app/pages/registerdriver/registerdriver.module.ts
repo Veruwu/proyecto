@@ -8,6 +8,8 @@ import { RegisterdriverPageRoutingModule } from './registerdriver-routing.module
 
 import { RegisterdriverPage } from './registerdriver.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     RegisterdriverPageRoutingModule,
     ComponentsModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [RegisterdriverPage]
 })

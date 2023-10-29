@@ -29,13 +29,14 @@ const routes: Routes = [
   {
     path: 'registeruser',
     loadChildren: () => import('./pages/registeruser/registeruser.module').then( m => m.RegisteruserPageModule)
-  },  {
+  },
+  {
     path: 'tab-inicial',
     loadChildren: () => import('./pages/tab-inicial/tab-inicial.module').then( m => m.TabInicialPageModule)
   },
   {
     path: 'inicio-cliente',
-    loadChildren: () => import('./pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule)
+    loadChildren: () => import('./pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule),
   },
   {
     path: 'perfilcliente',

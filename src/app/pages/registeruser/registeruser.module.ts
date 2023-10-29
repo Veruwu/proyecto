@@ -8,6 +8,8 @@ import { RegisteruserPageRoutingModule } from './registeruser-routing.module';
 
 import { RegisteruserPage } from './registeruser.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   imports: [
@@ -16,6 +18,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     RegisteruserPageRoutingModule,
     ComponentsModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [RegisteruserPage]
 })
