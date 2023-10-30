@@ -6,11 +6,11 @@
     <ion-item lines="full">
       <ion-input formControlName="nombre" labelPlacement="floating" label="Nombre" type="text" name="nombre" [(ngModel)]="usuario.nombre" regform.nombre required></ion-input>
     </ion-item>
-    <!-- <div *ngIf="this.ionicForm.controls?.['nombre']?.touched && this.ionicForm.controls?.['nombre']?.invalid">
+    <div *ngIf="this.ionicForm.controls?.['nombre']?.touched && this.ionicForm.controls?.['nombre']?.invalid">
       <ion-text>
       Ingrese nombre
     </ion-text>
-    </div> -->
+    </div>
     
     <ion-item lines="full">
       <ion-input formControlName="apellido" labelPlacement="floating" label="Apellido" type="text" name="apellido" [(ngModel)]="usuario.apellido" required></ion-input>
