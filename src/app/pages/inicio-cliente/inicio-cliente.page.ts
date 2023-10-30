@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio-cliente',
@@ -8,28 +8,13 @@ import { Router } from '@angular/router';
 })
 export class InicioClientePage implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
-  isModalOpen = false;
-  isModalOpen2 = false;
 
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
-
-  setOpen2(isOpen: boolean) {
-    this.isModalOpen2 = isOpen;
-  }
-
-  onSearchChange(event:string){
-
-  }
-
-  onSubmit(){
-    this.setOpen2(false);
-    this.router.navigate(['/tab-inicial/viaje']);
+  onSubmit() {
+    this.navCtrl.navigateForward('/tab-inicial/viaje');
   }
 
 }

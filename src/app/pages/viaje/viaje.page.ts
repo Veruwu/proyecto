@@ -7,9 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViajePage implements OnInit {
 
-  constructor() { }
+
+  Desde:'';
+  Hasta:'';
+
+
+  Viaje: boolean;
+
+  Recorrido: boolean;
+
+  constructor() {
+    this.Viaje = false;
+    this.Recorrido = false;
+   }
 
   ngOnInit() {
   }
 
+  onSubmit(){
+    this.Viaje = !this.Viaje;
+  }
+
+  IniciarViaje(){
+    this.Recorrido = !this.Recorrido
+  }
+
+  Terminar(){
+    this.Viaje = !this.Viaje;
+    this.Recorrido = !this.Recorrido
+  }
 }
