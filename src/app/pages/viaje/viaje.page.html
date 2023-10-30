@@ -8,11 +8,11 @@
   <div *ngIf="!Viaje">
     <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
       <ion-item lines="full">
-        <ion-input labelPlacement="floating" label="Desde" type="text" name="nombre" [(ngModel)]="Desde" required></ion-input>
+        <ion-input labelPlacement="floating" label="Desde" type="text" name="nombre" [(ngModel)]="viaje.Desde" required></ion-input>
       </ion-item>
 
       <ion-item lines="full">
-        <ion-input labelPlacement="floating" label="Hasta" type="text" name="apellido" [(ngModel)]="Hasta" required></ion-input>
+        <ion-input labelPlacement="floating" label="Hasta" type="text" name="apellido" [(ngModel)]="viaje.Hasta" required></ion-input>
       </ion-item>
 
       <ion-button class="ion-padding" type="submit" color="danger" expand="block" [disabled]="!miformulario.valid">Crear</ion-button>
@@ -36,14 +36,14 @@
       <ion-col size="6">
         <ion-item lines="full">
           <ion-icon slot="start" name="arrow-forward-outline"></ion-icon>
-          <ion-label>{{ Desde }}</ion-label>
+          <ion-label>{{ viaje.Desde }}</ion-label>
         </ion-item>
       </ion-col>
 
       <ion-col size="6">
         <ion-item lines="full">
           <ion-icon slot="start" name="arrow-down-outline"></ion-icon>
-          <ion-label>{{ Hasta }}</ion-label>
+          <ion-label>{{ viaje.Hasta }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -75,7 +75,7 @@
       <ion-progress-bar class="bar" color="primary" value="0.1" buffer="0.1" ></ion-progress-bar>
       </ion-item>
 
-      <ion-button expand="block" class="boton" color="primary" (click)="Terminar()">Terminar Viaje</ion-button>
+      <ion-button expand="block" class="boton" color="primary" (click)="CancelarViaje()">Terminar Viaje</ion-button>
 
     </div>
 
@@ -86,7 +86,7 @@
           <ion-button expand="block" class="boton" color="primary" (click)="IniciarViaje()">Iniciar Viaje</ion-button>
         </ion-col>
         <ion-col size="12">
-        <ion-button expand="block" class="boton" color="danger" (click)="onSubmit()">Cancelar Viaje</ion-button>
+        <ion-button expand="block" class="boton" color="danger" (click)="CancelarViaje()">Cancelar Viaje</ion-button>
         </ion-col>
       </ion-row>
 

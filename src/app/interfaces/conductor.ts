@@ -8,3 +8,8 @@ export interface Conductor {
     matricula:string,
     asientos:number
 }
+
+export interface Viaje {
+    Desde:string,
+    Hasta:string
+}

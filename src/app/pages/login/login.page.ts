@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { AutheticationService } from 'src/app/authetication.service';
-
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,8 @@ export class LoginPage implements OnInit {
       public formBuilder:FormBuilder,
       public loadingCtrl: LoadingController,
       public authService:AutheticationService,
-      private toastController: ToastController
+      private toastController: ToastController,
+      private storage:Storage
       ) { }
   
     ngOnInit() {
@@ -38,6 +39,8 @@ export class LoginPage implements OnInit {
           Validators.required,
         ]]
       })
+
+
     }
     
     get errorControl(){
@@ -64,17 +67,28 @@ export class LoginPage implements OnInit {
 
 
 
-    onSubmit()
-    {
-      // if (this.usuario.username=="wa@coldo.cl" && this.usuario.password=="123"){
-      //   this.router.navigate(['/tab-inicial/inicio-cliente'])
-      // }
-      // else{
-        
-      //   this.presentAlert()
-      // }
-  
+    async onSubmit(){
+      const user = await this.storage.get('usuario');
+      const driver = await this.storage.get('conductor');
+    if (user) {
+      if (user.email == this.usuario.username && user.password == this.usuario.password){
+        console.log('login correcto :)');
+        this.router.navigate(['/tab-inicial/inicio-cliente'])
+      }else{
+       console.log('el email o contraseña es incorrecto');
+      }
+    }else if(driver) {
+      if (driver.email == this.usuario.username && driver.password == this.usuario.password){
+        console.log('login correcto :)');
+        this.router.navigate(['/tab-inicial/inicio-cliente'])
+      }else{
+       console.log('el email o contraseña es incorrecto');
+      }
+    }else{
+    console.log('No se encontraron los USUARIOS');
     }
+    }
+  
     
     async presentToast(message: undefined) {
       console.log(message);

@@ -80,31 +80,21 @@ export class RegisteruserPage implements OnInit {
 
   async onSubmit(){
     if (this.usuario.password === this.repetirContrasena) {
-      let Usuarios: Usuario[] = (await this.storage.get('usuarios')) || [];
+      
 
-      Usuarios.push({
-        nombre: this.usuario.nombre,
-        apellido: this.usuario.apellido,
-        email: this.usuario.email,
-        password: this.usuario.password,
-      });
-
-      await this.storage.set('usuarios', Usuarios);
+      await this.storage.set('usuario', this.usuario);
 
       await this.obtenerUsuarios();
       console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
-      console.log("USUARIO ACTUAL = ",this.usuario);
 
       // this.router.navigate(['/tab-inicial/inicio-cliente'])
-
-
     } else {
       console.log('Formulario inválido o las contraseñas no coinciden');
     }
 }
 
 async obtenerUsuarios() {
-  const user = await this.storage.get('usuarios');
+  const user = await this.storage.get('usuario');
   if (user) {
     console.log(user);
   } else {

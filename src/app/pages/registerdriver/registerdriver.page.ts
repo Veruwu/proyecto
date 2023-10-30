@@ -38,33 +38,14 @@ export class RegisterdriverPage implements OnInit {
 
   async onSubmit() {
     if (this.conductor.password === this.repetirContrasena) {
-      let conductores: Conductor[] = (await this.storage.get('conductores')) || [];
   
-      conductores.push({
-        nombre: this.conductor.nombre,
-        apellido: this.conductor.apellido,
-        fecha_nacimiento: this.conductor.fecha_nacimiento,
-        email: this.conductor.email,
-        password: this.conductor.password,
-        tipo_auto: this.conductor.tipo_auto,
-        matricula: this.conductor.matricula,
-        asientos: this.conductor.asientos,
-      });
-  
-      await this.storage.set('conductores', conductores);
+      await this.storage.set('conductor', this.conductor);
       
       await this.obtenerUsuarios();
       console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
-      console.log("USUARIO ACTUAL = ",this.conductor);
+      console.log("USUARIO ACTUAL = ",this.conductor); 
 
-      let ext:NavigationExtras={
-        state:{
-          credenciales:this.conductor,
-          saludo:"Hola mundo!!!"
-        }
-      }  
-
-      this.router.navigate(['/tab-inicial/inicio-cliente', ext]);
+      this.router.navigate(['/tab-inicial/inicio-cliente']);
 
     } else {
       console.log('Formulario inválido o las contraseñas no coinciden');
@@ -72,7 +53,7 @@ export class RegisterdriverPage implements OnInit {
   }
 
   async obtenerUsuarios() {
-    const user = await this.storage.get('conductores');
+    const user = await this.storage.get('conductor');
     if (user) {
       console.log(user);
     } else {
