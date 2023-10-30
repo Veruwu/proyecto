@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
   selector: 'app-perfilcliente',
@@ -8,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class PerfilclientePage implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, public authService: AutheticationService) { }
+
+
+  async logout(){
+    this.authService.signOut().then(()=>{
+      this.router.navigate(['/home'])
+    })
+  }
 
   ngOnInit() {
   }
@@ -57,8 +65,11 @@ public alertButtons = [
 ];
 setResult(ev:any) {
   if(ev.detail.role == 'confirm'){
-    this.router.navigate(['/home'])
-    console.log(`Dismissed with role: ${ev.detail.role}`);
+    this.authService.signOut().then(()=>{
+      this.router.navigate(['/home'])
+      console.log(`Dismissed with role: ${ev.detail.role}`);
+    })
+
   }
   else{
     console.log(`No funcionó :c`);

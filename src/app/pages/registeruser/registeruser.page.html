@@ -2,25 +2,33 @@
 
 
 <ion-content class="ion-padding">
-  <form #miformulario="ngForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="ionicForm" novalidate #miformulario="ngForm" (ngSubmit)="onSubmit()">
     <ion-item lines="full">
-      <ion-input labelPlacement="floating" label="Nombre" type="text" name="nombre" [(ngModel)]="usuario.nombre" required></ion-input>
+      <ion-input formControlName="nombre" labelPlacement="floating" label="Nombre" type="text" name="nombre" [(ngModel)]="usuario.nombre" regform.nombre required></ion-input>
+    </ion-item>
+    <!-- <div *ngIf="this.ionicForm.controls?.['nombre']?.touched && this.ionicForm.controls?.['nombre']?.invalid">
+      <ion-text>
+      Ingrese nombre
+    </ion-text>
+    </div> -->
+    
+    <ion-item lines="full">
+      <ion-input formControlName="apellido" labelPlacement="floating" label="Apellido" type="text" name="apellido" [(ngModel)]="usuario.apellido" required></ion-input>
+    </ion-item>
+    
+
+    <ion-item lines="full">
+      <ion-input formControlName="email" labelPlacement="floating" label="E-mail" type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-input labelPlacement="floating" label="Apellido" type="text" name="apellido" [(ngModel)]="usuario.apellido" required></ion-input>
+      <ion-input formControlName="password" labelPlacement="floating" label="Contraseña" type="password" name="password" [(ngModel)]="usuario.password" required></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-input labelPlacement="floating" label="E-mail" type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-input labelPlacement="floating" label="Contraseña" type="password" name="password" [(ngModel)]="usuario.password" required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-input labelPlacement="floating" label="Repetir Contraseña" type="password" name="repetirContrasena" [(ngModel)]="repetirContrasena" required></ion-input>
+      <ion-input formControlName="password" labelPlacement="floating" label="Repetir Contraseña" type="password" name="repetirContrasena" [(ngModel)]="repetirContrasena" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block" [disabled]="!miformulario.valid">Sign Up</ion-button>
+        <ion-button (click)="signUp()" type="submit" color="danger" expand="block" [disabled]="!miformulario.valid">Sign Up</ion-button>
       </ion-col>
     </ion-row>
   </form>
