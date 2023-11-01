@@ -20,9 +20,11 @@ export class PerfilclientePage implements OnInit {
 
   ngOnInit() {
   }
+
   onClick(ruta:string){
     this.router.navigate(['/'+ruta])
   }
+  
     isModalOpen = false;
     isModalOpen2 = false;
     isModalOpen3 = false;
@@ -39,16 +41,6 @@ export class PerfilclientePage implements OnInit {
     this.isModalOpen3 = isOpen;
   }
 
-features: any[] = [
-  {id: 1, name: 'Agregar tarjeta', src: 'assets/icons/top-up.png', background: 'rgba(27,150,181, 0.1)', page: ''},
-  {id: 2, name: 'Cupones', src: 'assets/icons/cash-withdrawal.png', background: 'rgba(106,100,255, 0.1)', page: ''},
-
-];
-
-transactions: any[] = [
-  {id: 1, vendor: 'PhonePe', image: '', amount: 1500, time: '3:00PM'},
-  {id: 2, vendor: 'Flaticons', image: '', amount: -1200, time: '4:00PM'}
-];
 
 public alertButtons = [
   {
