@@ -68,9 +68,11 @@ const routes: Routes = [
     path: 'viaje',
     loadChildren: () => import('./pages/viaje/viaje.module').then( m => m.ViajePageModule),
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
-  },  {
+  },
+  {
     path: 'legal',
-    loadChildren: () => import('./pages/legal/legal.module').then( m => m.LegalPageModule)
+    loadChildren: () => import('./pages/legal/legal.module').then( m => m.LegalPageModule),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
 
 
