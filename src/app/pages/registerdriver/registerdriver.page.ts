@@ -36,9 +36,14 @@ export class RegisterdriverPage implements OnInit {
   }
 
 
+  async activar(valor:Number){
+    await this.storage.set("sesion",valor);
+    }
+
   async onSubmit() {
     if (this.conductor.password === this.repetirContrasena) {
   
+      this.activar(1)
       await this.storage.set('conductor', this.conductor);
       
       await this.obtenerUsuarios();
@@ -48,6 +53,7 @@ export class RegisterdriverPage implements OnInit {
       this.router.navigate(['/tab-inicial/inicio-cliente']);
 
     } else {
+      this.activar(0)
       console.log('Formulario inválido o las contraseñas no coinciden');
     }
   }

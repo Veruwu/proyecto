@@ -72,23 +72,31 @@ export class LoginPage implements OnInit {
       const driver = await this.storage.get('conductor');
     if (user) {
       if (user.email == this.usuario.username && user.password == this.usuario.password){
+        this.activar(1);
         console.log('login correcto :)');
         this.router.navigate(['/tab-inicial/inicio-cliente'])
       }else{
+        this.activar(0);
        console.log('el email o contraseña es incorrecto');
       }
     }else if(driver) {
       if (driver.email == this.usuario.username && driver.password == this.usuario.password){
         console.log('login correcto :)');
+        this.activar(1);
         this.router.navigate(['/tab-inicial/inicio-cliente'])
       }else{
+        this.activar(0);
        console.log('el email o contraseña es incorrecto');
       }
     }else{
+      this.activar(0);
     console.log('No se encontraron los USUARIOS');
     }
     }
   
+    async activar(valor:Number){
+    await this.storage.set("sesion",valor);
+    }
     
     async presentToast(message: undefined) {
       console.log(message);
