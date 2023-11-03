@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { AutheticationService } from 'src/app/authetication.service';
 })
 export class PerfilclientePage implements OnInit {
 
-  constructor(private router:Router, public authService: AutheticationService) { }
+  nombre:string;
+
+  constructor(private router:Router, public authService: AutheticationService,private storage:Storage) { }
 
 
   async logout(){
@@ -19,6 +22,7 @@ export class PerfilclientePage implements OnInit {
   }
 
   ngOnInit() {
+    this.obtenerUsuario()
   }
 
   onClick(ruta:string){
@@ -59,6 +63,7 @@ setResult(ev:any) {
   if(ev.detail.role == 'confirm'){
     this.authService.signOut().then(()=>{
       this.router.navigate(['/home'])
+      this.activar(0)
       console.log(`Dismissed with role: ${ev.detail.role}`);
     })
 
@@ -68,5 +73,23 @@ setResult(ev:any) {
   }
   
 }
+
+async activar(valor:Number){
+  await this.storage.set("sesion",valor);
+  }
+
+  async obtenerUsuario() {
+    const user = await this.storage.get('usuario');
+    const driver = await this.storage.get('conductor');
+    if (user) {
+      this.storage.remove('conductor')
+      this.nombre = user.nombre + " " + user.apellido;
+    }else if (driver) {
+      this.storage.remove('usuario')
+      this.nombre = driver.nombre + " " + driver.apellido;
+    }else{
+      console.log('no se encontraron usuarios ni conductores')
+    }
+  }
 
 }

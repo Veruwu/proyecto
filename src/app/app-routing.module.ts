@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ForgotpassPageModule } from './pages/forgotpass/forgotpass.module';
 import { RegisteruserPageModule } from './pages/registeruser/registeruser.module';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { AuthGuard } from './guards/auth.guard';
+
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -37,28 +39,28 @@ const routes: Routes = [
   {
     path: 'tab-inicial',
     loadChildren: () => import('./pages/tab-inicial/tab-inicial.module').then( m => m.TabInicialPageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'inicio-cliente',
     loadChildren: () => import('./pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'perfilcliente',
     loadChildren: () => import('./pages/perfilcliente/perfilcliente.module').then( m => m.PerfilclientePageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'notificaciones',
     loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
 
   },
   {
     path: 'actividad',
     loadChildren: () => import('./pages/actividad/actividad.module').then( m => m.ActividadPageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'registerdriver',
@@ -67,7 +69,7 @@ const routes: Routes = [
   {
     path: 'viaje',
     loadChildren: () => import('./pages/viaje/viaje.module').then( m => m.ViajePageModule),
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
 
     

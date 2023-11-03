@@ -70,18 +70,24 @@ export class RegisteruserPage implements OnInit {
       })
 
       if(user){
+        this.activar(1)
         loading.dismiss()
         this.router.navigate(['/tab-inicial/inicio-cliente'])
       }else{
+        this.activar(0)
         console.log("Ingrese valores correctos")
       }
     }
   }
 
+  async activar(valor:Number){
+    await this.storage.set("sesion",valor);
+    }
+
   async onSubmit(){
     if (this.usuario.password === this.repetirContrasena) {
       
-
+      this.activar(1)
       await this.storage.set('usuario', this.usuario);
 
       await this.obtenerUsuarios();
@@ -89,6 +95,7 @@ export class RegisteruserPage implements OnInit {
 
       // this.router.navigate(['/tab-inicial/inicio-cliente'])
     } else {
+      this.activar(0)
       console.log('Formulario inválido o las contraseñas no coinciden');
     }
 }
