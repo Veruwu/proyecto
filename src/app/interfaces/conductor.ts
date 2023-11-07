@@ -7,9 +7,13 @@ export interface Conductor {
     tipo_auto:string,
     matricula:string,
     asientos:number
+    
 }
 
 export interface Viaje {
     Desde:string,
-    Hasta:string
+    Hasta:string,
+    Asientos:null,
+    Valor:null,
+    Id:string
 }

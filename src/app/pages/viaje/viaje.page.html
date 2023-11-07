@@ -15,7 +15,15 @@
         <ion-input labelPlacement="floating" label="Hasta" type="text" name="apellido" [(ngModel)]="viaje.Hasta" required></ion-input>
       </ion-item>
 
-      <ion-button class="ion-padding" type="submit" color="danger" expand="block" [disabled]="!miformulario.valid">Crear</ion-button>
+      <ion-item lines="full">
+        <ion-input labelPlacement="floating" label="Asientos" type="text" name="asiento" [(ngModel)]="viaje.Asientos" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-input labelPlacement="floating" label="Valor" type="text" name="valor" [(ngModel)]="viaje.Valor" required></ion-input>
+      </ion-item>
+
+      <ion-button  class="ion-padding" type="submit" color="danger" expand="block" [disabled]="!miformulario.valid">Crear</ion-button>
     </form>
   </div>
 

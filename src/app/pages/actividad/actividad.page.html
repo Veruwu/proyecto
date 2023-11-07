@@ -14,13 +14,16 @@
 </ion-header>
 
 
-  <div *ngIf="mostrar" class="ion-padding" (click)="onClick()">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{Desde}} {{" a "}} {{Hasta}}</ion-card-title>
-        <ion-card-subtitle>Ingresar al viaje..</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
+  <div *ngIf="mostrar" class="ion-padding" (click)="onClick()" >
+    <ion-list *ngFor="let item of Datos">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{item.Desde}} {{" a "}} {{item.Hasta}}</ion-card-title>
+          <ion-card-subtitle>Ingresar al viaje..</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-list>
+
   </div>
   
   <div *ngIf="!mostrar" class="ion-padding">
