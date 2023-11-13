@@ -5,6 +5,7 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
 import { AutheticationService } from 'src/app/authetication.service';
 import { Storage } from '@ionic/storage-angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -61,6 +62,14 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/tab-inicial/inicio-cliente'])
       }else{
         console.log("Ingrese valores correctos")
+        const alert = await this.alertController.create({
+          header: 'Alerta',
+          message: "Usuario y/o password incorrectos",
+          buttons: ['OK'],
+          backdropDismiss:false,
+          
+        });
+        await alert.present();
       }
     }
     }
@@ -110,15 +119,4 @@ export class LoginPage implements OnInit {
       await toast.present();
     }
   
-    async presentAlert() {
-      const alert = await this.alertController.create({
-        header: 'Alerta',
-        subHeader: 'Información',
-        message: "Usuario y/o password incorrectos",
-        buttons: ['OK'],
-        backdropDismiss:false,
-        
-      });
-      await alert.present();
-    }
 }

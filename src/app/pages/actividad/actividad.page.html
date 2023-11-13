@@ -1,8 +1,5 @@
 
-
-<ion-content class="ion-padding">
-
-  <ion-header collapse="condense">
+  <ion-header>
   <ion-toolbar>
     
     <ion-title size="large" slot="start">Explorar</ion-title>
@@ -14,19 +11,24 @@
 </ion-header>
 
 
-  <div *ngIf="mostrar" class="ion-padding" (click)="onClick()" >
+<ion-content>
+
+<div class="ion-padding">
+  <div class="ion-padding" class="perro">
+  <div *ngIf="mostrar" >
     <ion-list *ngFor="let item of Datos">
-      <ion-card>
+      <ion-card button="true" [routerLink]="['/detalle-viaje']" (click)="mostrarviajecito(item)">
         <ion-card-header>
           <ion-card-title>{{item.Desde}} {{" a "}} {{item.Hasta}}</ion-card-title>
-          <ion-card-subtitle>Ingresar al viaje..</ion-card-subtitle>
+          <ion-card-subtitle>Ingresar al viaje.. </ion-card-subtitle>
+          {{item.Id}} viajaso.Desde
         </ion-card-header>
       </ion-card>
     </ion-list>
-
+    
   </div>
   
-  <div *ngIf="!mostrar" class="ion-padding">
+  <div *ngIf="!mostrar">
     <ion-card>
       <ion-card-header>
         <ion-card-title>Sin Viajes Disponibles</ion-card-title>
@@ -34,5 +36,10 @@
       </ion-card-header>
     </ion-card>
   </div>
+</div>
+</div>
+
+
+
 
 </ion-content>

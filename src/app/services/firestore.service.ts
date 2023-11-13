@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore, collection,addDoc } from '@angular/fire/firestore';
 import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
-import { Viaje } from '../interfaces/conductor';
+import { Viaje, Conductor } from '../interfaces/conductor';
+import { Usuario } from '../interfaces/usuario';
 import { AlertController } from '@ionic/angular';
 
 
@@ -11,6 +12,9 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class FirestoreService {
+
+
+  editviaje:Viaje;
 
   constructor(private firestone:AngularFirestore, private alertController: AlertController) { }
 
@@ -28,30 +32,49 @@ export class FirestoreService {
     return this.firestone.collection('viaje').valueChanges();
   }
 
+  obtDataid(id:string){
+    return this.firestone.collection('viaje').doc(id).valueChanges();
+  }
+
   deleteDoc(viaje:Viaje, id:string){
     return this.firestone.collection('viaje').doc(id).delete()
   }
 
-  async presentAlert(texto:string, subtitulo:string) {
-    const alert = await this.alertController.create({
-      header: texto,
-      subHeader: subtitulo,
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            return true;
-          },
-        },
-      ]
-    });
 
-    await alert.present();
-    await alert.onDidDismiss();
+  creaUser(usuario:Usuario, id:string){
+    const elviaje = this.firestone.collection('pasajero')
+    return elviaje.doc(id).set(usuario)
+  }
+
+
+  obtUser(){
+    return this.firestone.collection('pasajero').valueChanges();
+  }
+
+  deleteUser(usuario:Usuario, id:string){
+    return this.firestone.collection('pasajero').doc(id).delete()
+  }
+
+
+  creatDriver(conductor:Conductor, id:string){
+    const elviaje = this.firestone.collection('conductor')
+    return elviaje.doc(id).set(conductor)
+  }
+
+
+  obtDriver(){
+    return this.firestone.collection('conductor').valueChanges();
+  }
+
+  deleteDriver(conductor:Conductor, id:string){
+    return this.firestone.collection('conductor').doc(id).delete()
+  }
+
+  mostrarViaje(viaje:Viaje){
+    this.editviaje = viaje;
+  }
+
+  pasarViaje(){
+    return this.editviaje
   }
 }

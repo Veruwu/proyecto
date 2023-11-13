@@ -1,29 +1,28 @@
-<ion-content class="ion-padding">
-  <ion-searchbar show-clear-button="focus" animated="true" placeholder="Solicitar un viaje" [debounce]="250"></ion-searchbar>
+<ion-content>
 
-<div class="viajes">
-  <h1>Bienvenido {{nombre}} </h1>
-</div>
+  <div class="ion-padding">
 
-  <div class="viajes">
-    <ion-button class="box" expand="block" (click)="onSubmit(false)">Buscar Viajes</ion-button>
-    <ion-button class="box" expand="block" (click)="onSubmit(true)">Crear Viaje</ion-button>
-    
+    <div class="viajes">
+      <h1>Bienvenido {{nombre}} </h1>
+    </div>
+
+    <div class="viajes">
+      <ion-button class="box" expand="block" (click)="onSubmit(false)">Buscar Viajes</ion-button>
+      <ion-button class="box" expand="block" (click)="onSubmit(true)">Crear Viaje</ion-button>
+
+    </div>
+
+    <ion-card button="true" (click)="onSubmit(true)">
+      <img alt="" src="assets/img/redcar2.jpg" />
+      <ion-card-header>
+        <ion-card-title>Seguimiento del viaje</ion-card-title>
+        <ion-card-subtitle></ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        Conductor: {{nombre}}
+      </ion-card-content>
+    </ion-card>
   </div>
 
-  <ion-card button="true" (click)="onSubmit(true)">
-    <img alt="" src="https://easydrawingart.com/wp-content/uploads/2019/07/How-to-draw-a-car.jpg" />
-    <ion-card-header>
-      <ion-card-title>Seguimiento del viaje</ion-card-title>
-      <ion-card-subtitle></ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-     Conductor: {{nombre}}
-    </ion-card-content>
-  </ion-card>
-
-
-
-  
 </ion-content>

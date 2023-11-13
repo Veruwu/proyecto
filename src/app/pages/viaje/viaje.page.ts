@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NavParams } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { Viaje } from 'src/app/interfaces/conductor';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -23,11 +25,14 @@ export class ViajePage implements OnInit {
 
   Viaje: boolean;
   Recorrido: boolean;
+  sumasientos: any = null;
 
   storageInitialized: boolean = false; 
 
-  constructor(private storage:Storage, private services:FirestoreService) {
+  constructor(private storage:Storage, private services:FirestoreService, private router: Router) {
     this.Recorrido = false;
+    this.sumasientos = this.router.getCurrentNavigation()?.extras?.state;
+    console.log(this.sumasientos);
    }
 
   async ngOnInit() {

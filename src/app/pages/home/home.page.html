@@ -1,23 +1,24 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="background-color: #f1f6ce;">
     <ion-title>
       Fastic
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="center">
-  <ion-content class="auth-form" class="ion-padding">
+<ion-content>
+  <img src="assets/img/redcar.jpg" alt="">
+  <div class="auth-form" class="ion-padding">
   <ion-grid>
     <ion-row >
       <ion-col align-self-center >
-        <ion-button (click)="onClick('registerbase')" expand="block" color="primary">Register</ion-button>
+        <ion-button (click)="onClick('registerbase')" expand="block" color="dark">Register</ion-button>
         <span class="divider line one-line">or</span>
         <span class="already">Already a user?</span>
-        <ion-button (click)="onClick('login')" expand="block" color="danger">Sign In</ion-button>
+        <ion-button  (click)="onClick('login')" expand="block" color="warning">Sign In</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</div>
 </ion-content>
 

@@ -2,21 +2,25 @@
 
 <app-encabezado titulo="Cambiar contraseña"></app-encabezado>
 
-<ion-content class="ion-padding">
+<ion-content>
   <form [formGroup]="resetForm" novalidate #passform="ngForm" (ngSubmit)="onSubmit()">
+    <div class="ion-padding">
     <ion-item lines="full">
       <ion-input formControlName="email" labelPlacement="floating" label="E-mail" type="email" name="email" [(ngModel)]="email" required></ion-input>
     </ion-item>
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="resetpassword()" type="submit" color="danger" expand="block" [disabled]="!passform.valid">Send</ion-button>
+        <ion-button (click)="resetpassword()" type="submit" expand="block" [disabled]="!passform.valid">Send</ion-button>
       </ion-col>
     </ion-row>
 
-    <small>
-      Please provide the email address that you used when you signed
-      up for your account.
+    <small >
+      Please provide the email address that you used when you signed up for your account.
     </small>
+    </div>
+
+
+
   </form>
 </ion-content>

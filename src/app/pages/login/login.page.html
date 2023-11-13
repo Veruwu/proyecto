@@ -2,32 +2,31 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="logForm" novalidate #miformulario="ngForm" (ngSubmit)="onSubmit()">
-    <ion-item lines="full">
-      <ion-input 
-      formControlName="email"
-      label="E-mail" 
-      labelPlacement="floating" 
-      required type="email" 
-      name="email" 
-      placeholder="Ingrese su E-mail" 
-      aria-label="email" 
-      [(ngModel)]="usuario.username"
-      ngModel
-      email>
-    </ion-input>
-      
-    </ion-item>
-    
-    <ion-item lines="full">
-      <ion-input formControlName="password" label="Contraseña" aria-label="password" labelPlacement="floating" required type="password" name="password" placeholder="Ingrese su contraseña" [(ngModel)]="usuario.password"></ion-input>
-      
-    </ion-item>
+    <div class="ion-padding">
+      <ion-item lines="full">
+        <ion-input formControlName="email" label="E-mail" labelPlacement="floating" required type="email" name="email"
+          placeholder="Ingrese su E-mail" aria-label="email" [(ngModel)]="usuario.username" ngModel email>
+        </ion-input>
+        <ion-icon style="color: #000;" name="person-outline"></ion-icon>
+      </ion-item>
 
-    <ion-row>
-      <ion-col>
-        <ion-button (click)="login()" type="submit" color="danger" expand="block" [disabled]="miformulario.invalid">Sign In</ion-button>
-        <a [routerLink]="['/forgotpass']" class="small-text">Forgot Password?</a>
-      </ion-col>
-    </ion-row>
+      <ion-item lines="full">
+        
+        <ion-input formControlName="password" label="Contraseña" aria-label="password" labelPlacement="floating"
+          required type="password" name="password" placeholder="Ingrese su contraseña"
+          [(ngModel)]="usuario.password"></ion-input>
+        <ion-icon style="color: #000;" name="lock-closed-outline"></ion-icon>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="login()" type="submit" expand="block"
+            [disabled]="miformulario.invalid">Sign In</ion-button>
+          <a [routerLink]="['/forgotpass']" class="small-text" style="color: #294380;">Forgot Password?</a>
+        </ion-col>
+      </ion-row>
+    </div>
+
   </form>
+
 </ion-content>

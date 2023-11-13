@@ -1,0 +1,23 @@
+<app-encabezado titulo="Detalle Viaje"></app-encabezado>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-padding">
+    <ion-list class="ion-padding">
+      <ion-label>
+        <h2>Viaje</h2>
+        <p>Origen: {{viajaso.Desde}}</p>
+        <p>Destino: {{viajaso.Hasta}}</p>
+        <p>Valor: {{viajaso.Valor}}</p>
+        <p>Asientos Disponibles: {{viajaso.Asientos}}</p>
+        <p>{{contador}}</p>
+        <!-- <p>{{viajaso.Id}}</p> -->
+      </ion-label>
+    </ion-list>
+    
+  </div>
+
+  <div class="ion-padding">
+    <ion-button expand="full" (click)="onClick('/tab-inicial/inicio-cliente')" [disabled]="confirmado">Confirmar Viaje</ion-button>
+  </div>
+</ion-content>

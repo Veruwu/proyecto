@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { AutheticationService } from 'src/app/authetication.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class RegisteruserPage implements OnInit {
     nombre:'',
     apellido:'',
     email:'',
-    password:''
+    password:'',
+    Id:'',
   }
 
   repetirContrasena: string = '';
@@ -31,8 +33,14 @@ export class RegisteruserPage implements OnInit {
   constructor(private router:Router, private storage:Storage, public formBuilder:FormBuilder,
     public loadingCtrl: LoadingController,
     public authService:AutheticationService,
+    private services:FirestoreService,
     
-    ) {this.ionicForm}
+    ) {
+      if (!this.storageInitialized) {
+        this.storage.create();
+        this.storageInitialized = true;
+      }
+    }
 
   async ngOnInit() {
 
@@ -50,10 +58,10 @@ export class RegisteruserPage implements OnInit {
     })
 
 
-    if (!this.storageInitialized) {
-      await this.storage.create();
-      this.storageInitialized = true;
-    }
+    // if (!this.storageInitialized) {
+    //   await this.storage.create();
+    //   this.storageInitialized = true;
+    // }
   }
 
   get errorControl(){
@@ -92,6 +100,12 @@ export class RegisteruserPage implements OnInit {
 
       await this.obtenerUsuarios();
       console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
+
+      const id = this.services.getId();
+      this.usuario.Id = id;
+      const response = await this.services.creaUser(this.usuario, id);
+     
+      console.log(id)
 
       // this.router.navigate(['/tab-inicial/inicio-cliente'])
     } else {
