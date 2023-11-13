@@ -19,8 +19,8 @@ export class DetalleViajePage implements OnInit {
   viajaso:Viaje={
     Desde:'',
     Hasta:'',
-    Asientos: null,
-    Valor: null,
+    Asientos: '',
+    Valor: '',
     Id:'',
   }
   Hasta:string;
@@ -61,7 +61,11 @@ export class DetalleViajePage implements OnInit {
 
   async onClick(ruta:string) {
     this.router.navigate(['/'+ruta])
-    this.viajaso.Asientos 
+    if(this.viajaso.Asientos! > 0){
+      this.viajaso.Asientos-- 
+      this.confirmado = true;
+    }
+    
 
   }
 

@@ -12,7 +12,7 @@ export interface Conductor {
 export interface Viaje {
     Desde:string,
     Hasta:string,
-    Asientos:null,
-    Valor:null,
+    Asientos:any,
+    Valor:any,
     Id:string
 }
