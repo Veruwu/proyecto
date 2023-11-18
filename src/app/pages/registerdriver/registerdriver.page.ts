@@ -77,7 +77,7 @@ export class RegisterdriverPage implements OnInit {
       if(user){
         this.activar(1)
         loading.dismiss()
-        this.router.navigate(['/tab-inicial/inicio-cliente'])
+        this.router.navigate(['/tab-drive/inicio-cliente'])
       }else{
         this.activar(0)
         console.log("Ingrese valores correctos")

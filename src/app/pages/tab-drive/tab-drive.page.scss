@@ -1,0 +1,27 @@
+
+
+ion-button {
+    --background: #69d2cd;
+    color: #0d0f36;
+    margin-bottom: 16px;
+}
+
+ion-tab-bar {
+    --background: #294380;
+    --border-radius: 8px;
+    --color: #efefef;
+}
+
+ion-tab-button {
+
+    --background-focused: #b9f1d6;
+    --background-focused-opacity: 1;
+    --color: #b9f1d6;
+    --color-focused: #b9f1d6;
+    --color-selected: #0d0f36;
+    --padding-bottom: 4px;
+    --padding-end: 4px;
+    --padding-start: 4px;
+    --padding-top: 4px;
+    --ripple-color: #1e1e1e;
+}
