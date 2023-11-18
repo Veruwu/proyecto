@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
 
       if(user){
         loading.dismiss()
-        this.router.navigate(['/tab-inicial/inicio-cliente'])
+        this.router.navigate(['/tab-drive/inicio-cliente'])
       }else{
         console.log("Ingrese valores correctos")
         const alert = await this.alertController.create({

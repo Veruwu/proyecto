@@ -80,9 +80,15 @@ const routes: Routes = [
     path: 'ayuda',
     loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule),
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
-  },  {
+  },
+  {
     path: 'detalle-viaje',
     loadChildren: () => import('./pages/detalle-viaje/detalle-viaje.module').then( m => m.DetalleViajePageModule)
+  },
+  {
+    path: 'tab-drive',
+    loadChildren: () => import('./pages/tab-drive/tab-drive.module').then( m => m.TabDrivePageModule),
+    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
 
 
