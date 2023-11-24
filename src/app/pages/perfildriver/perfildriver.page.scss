@@ -1,0 +1,60 @@
+.cajita{
+    
+    
+    width: 80px;
+    height: 12vh;
+    font-size: xx-small;
+    text-align: center;
+    
+}
+
+ion-content {
+  --background: #EDF2FA;
+
+}
+
+ion-card-title {
+    font-size: xx-large;
+    
+}
+
+ion-button {
+    --color: auto;
+}
+
+.but {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --background-color: #3880ff;
+    
+}
+
+
+
+  .content {
+    background-color: rgb(245, 245, 245);
+    width: 90%;
+    height: 70vh;
+    margin-top: 40px;
+    margin-left: 15px;
+    border: 3px solid lightgray;
+    align-items: center;
+    
+}
+
+
+
+ion-item {
+  --background: #b9f1d6;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  color: #0d0f36;
+
+}
+
+ion-list {
+  background-color: #EDF2FA;
+
+}
+

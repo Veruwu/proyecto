@@ -4,7 +4,8 @@ export interface Conductor {
     email:string,
     password:string,
     matricula:string,
-    Id:string
+    Id:any
+    perfil: "conductor"
 
     
 }

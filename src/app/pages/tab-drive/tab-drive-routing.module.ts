@@ -13,8 +13,8 @@ const routes: Routes = [
         loadChildren: () => import('./../../pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule)
       },
       {
-        path: 'perfilcliente',
-        loadChildren: () => import('./../../pages/perfilcliente/perfilcliente.module').then( m => m.PerfilclientePageModule)
+        path: 'perfildriver',
+        loadChildren: () => import('./../../pages/perfildriver/perfildriver.module').then( m => m.PerfildriverPageModule)
       },
       {
         path: 'viaje',

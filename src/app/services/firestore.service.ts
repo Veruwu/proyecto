@@ -32,8 +32,8 @@ export class FirestoreService {
     return this.firestone.collection('viaje').valueChanges();
   }
 
-  obtDataid(id:string){
-    return this.firestone.collection('viaje').doc(id).valueChanges();
+  obtDataid(path:string ,id:string){
+    return this.firestone.collection(path).doc(id).valueChanges();
   }
 
   deleteDoc(viaje:Viaje, id:string){
@@ -41,7 +41,7 @@ export class FirestoreService {
   }
 
 
-  creaUser(usuario:Usuario, id:string){
+  creaUser(usuario:Usuario, id:any){
     const elviaje = this.firestone.collection('pasajero')
     return elviaje.doc(id).set(usuario)
   }
@@ -56,7 +56,7 @@ export class FirestoreService {
   }
 
 
-  creatDriver(conductor:Conductor, id:string){
+  creatDriver(conductor:Conductor, id:any){
     const elviaje = this.firestone.collection('conductor')
     return elviaje.doc(id).set(conductor)
   }
@@ -77,4 +77,10 @@ export class FirestoreService {
   pasarViaje(){
     return this.editviaje
   }
+
+  getElDriver<tipo>(path:string, id:any){
+    return this.firestone.collection(path).doc<tipo>(id).valueChanges()
+
+  }
+
 }

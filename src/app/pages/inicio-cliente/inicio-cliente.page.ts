@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
   selector: 'app-inicio-cliente',
@@ -11,8 +13,16 @@ export class InicioClientePage implements OnInit {
 
     nombre:string;
 
-  constructor(private navCtrl: NavController,private storage:Storage) {
-    
+  constructor(private navCtrl: NavController,private storage:Storage, private ngFireAuth: AutheticationService ) {
+
+    this.ngFireAuth.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+        console.log(uid)
+        console.log(email)
+      }
+    })
   }
 
   ngOnInit() {

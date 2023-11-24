@@ -39,28 +39,28 @@ const routes: Routes = [
   {
     path: 'tab-inicial',
     loadChildren: () => import('./pages/tab-inicial/tab-inicial.module').then( m => m.TabInicialPageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'inicio-cliente',
     loadChildren: () => import('./pages/inicio-cliente/inicio-cliente.module').then( m => m.InicioClientePageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'perfilcliente',
     loadChildren: () => import('./pages/perfilcliente/perfilcliente.module').then( m => m.PerfilclientePageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'notificaciones',
     loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
 
   },
   {
     path: 'actividad',
     loadChildren: () => import('./pages/actividad/actividad.module').then( m => m.ActividadPageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'registerdriver',
@@ -69,7 +69,7 @@ const routes: Routes = [
   {
     path: 'viaje',
     loadChildren: () => import('./pages/viaje/viaje.module').then( m => m.ViajePageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'legal',
@@ -83,13 +83,19 @@ const routes: Routes = [
   },
   {
     path: 'detalle-viaje',
-    loadChildren: () => import('./pages/detalle-viaje/detalle-viaje.module').then( m => m.DetalleViajePageModule)
+    loadChildren: () => import('./pages/detalle-viaje/detalle-viaje.module').then( m => m.DetalleViajePageModule),
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'tab-drive',
     loadChildren: () => import('./pages/tab-drive/tab-drive.module').then( m => m.TabDrivePageModule),
-    canActivate: [AngularFireAuthGuard,AuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
+  {
+    path: 'perfildriver',
+    loadChildren: () => import('./pages/perfildriver/perfildriver.module').then( m => m.PerfildriverPageModule)
+  },
+
 
 
 

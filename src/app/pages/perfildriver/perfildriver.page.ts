@@ -4,11 +4,11 @@ import { Storage } from '@ionic/storage-angular';
 import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
-  selector: 'app-perfilcliente',
-  templateUrl: './perfilcliente.page.html',
-  styleUrls: ['./perfilcliente.page.scss'],
+  selector: 'app-perfildriver',
+  templateUrl: './perfildriver.page.html',
+  styleUrls: ['./perfildriver.page.scss'],
 })
-export class PerfilclientePage implements OnInit {
+export class PerfildriverPage implements OnInit {
 
   nombre:string;
 
@@ -73,11 +73,10 @@ setResult(ev:any) {
   }
   
 }
-
 setResult2(ev:any) {
   if(ev.detail.role == 'confirm'){
     this.authService.signOut().then(()=>{
-      this.router.navigate(['/tab-drive/inicio-cliente'])
+      this.router.navigate(['/tab-inicial/inicio-cliente'])
       this.activar(0)
       console.log(`Dismissed with role: ${ev.detail.role}`);
     })
@@ -106,5 +105,4 @@ async activar(valor:Number){
       console.log('no se encontraron usuarios ni conductores')
     }
   }
-
 }

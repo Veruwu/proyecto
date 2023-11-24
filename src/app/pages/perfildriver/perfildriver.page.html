@@ -1,0 +1,94 @@
+<ion-content class="ion-padding">
+  <div>
+    <ion-card class="but" style="background-color: #0d0f36; border-radius: 20px; height: 10vh;">
+
+        <div>
+          <ion-card-title> {{nombre}} </ion-card-title>
+        </div>
+
+    </ion-card>
+  </div>
+
+  <div>
+      <ion-list>
+
+        <ion-item>
+          <ion-button (click)="setOpen(true)" size="large" fill="clear"><ion-icon slot="start"
+              name="settings-outline"></ion-icon>
+            <ion-label>Configuración</ion-label></ion-button>
+          <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Configuración</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen(false)">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <ion-list>
+                  <ion-item>
+                    <ion-button size="medium" expand="full" fill="clear" shape="round">
+                      <ion-icon slot="start" name="home-outline"></ion-icon>
+                      <ion-label>Agregar dirección particular</ion-label>
+                    </ion-button>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-button size="medium" expand="full" fill="clear" shape="round">
+                      <ion-icon slot="start" name="business-outline"></ion-icon>
+                      <ion-label>Agregar dirección laboral</ion-label>
+                    </ion-button>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-button size="medium" expand="full" fill="clear" shape="round">
+                      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+                      <ion-label>Privacidad</ion-label>
+                    </ion-button>
+
+                  </ion-item>
+                  <ion-item>
+                    <ion-button size="medium" expand="full" fill="clear" shape="round">
+                      <ion-icon slot="start" name="shield-checkmark-outline"></ion-icon>
+                      <ion-label>Seguridad</ion-label>
+                    </ion-button>
+
+                  </ion-item>
+                </ion-list>
+
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+        </ion-item>
+
+        <ion-item (click)="onClick('ayuda')">
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="help-outline"></ion-icon>
+            <ion-label>Ayuda</ion-label></ion-button>
+
+        </ion-item>
+
+        <ion-item (click)="onClick('legal')">
+          <ion-button size="large" fill="clear"><ion-icon slot="start" name="information-circle-outline"></ion-icon>
+            <ion-label>Legal</ion-label></ion-button>
+
+        </ion-item>
+
+        
+        <ion-item>
+          <ion-alert trigger="present-alert" class="custom-alert" header="Are you sure?" [buttons]="alertButtons"
+            (didDismiss)="setResult($event)"></ion-alert>
+          <ion-button id="present-alert" size="large" fill="clear"><ion-icon slot="start"
+              name="log-out-outline"></ion-icon>
+
+            <ion-label>Cerrar sesión</ion-label></ion-button>
+
+        </ion-item>
+
+      </ion-list>
+
+  </div>
+
+</ion-content>

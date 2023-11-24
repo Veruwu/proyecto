@@ -23,6 +23,7 @@ export class RegisterdriverPage implements OnInit {
     password:'',
     matricula:'',
     Id:'',
+    perfil: 'conductor',
   };
 
   repetirContrasena: string = '';
@@ -77,6 +78,12 @@ export class RegisterdriverPage implements OnInit {
       if(user){
         this.activar(1)
         loading.dismiss()
+        const id = user.user?.uid
+        this.conductor.Id = id;
+        const response = await this.services.creatDriver(this.conductor, id);
+       
+        console.log(id)
+        console.log(response)
         this.router.navigate(['/tab-drive/inicio-cliente'])
       }else{
         this.activar(0)
@@ -90,26 +97,26 @@ export class RegisterdriverPage implements OnInit {
     }
 
   async onSubmit() {
-    if (this.conductor.password === this.repetirContrasena) {
+    // if (this.conductor.password === this.repetirContrasena) {
   
-      this.activar(1)
-      await this.storage.set('conductor', this.conductor);
+    //   this.activar(1)
+    //   await this.storage.set('conductor', this.conductor);
       
-      await this.obtenerUsuarios();
-      console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
-      console.log("USUARIO ACTUAL = ",this.conductor); 
+    //   await this.obtenerUsuarios();
+    //   console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
+    //   console.log("USUARIO ACTUAL = ",this.conductor); 
 
-      const id = this.services.getId();
-      this.conductor.Id = id;
-      const response = await this.services.creatDriver(this.conductor, id);
+    //   const id = this.services.getId();
+    //   this.conductor.Id = id;
+    //   const response = await this.services.creatDriver(this.conductor, id);
      
-      console.log(id)
-      // this.router.navigate(['/tab-inicial/inicio-cliente']);
+    //   console.log(id)
+    //   this.router.navigate(['/tab-inicial/inicio-cliente']);
 
-    } else {
-      this.activar(0)
-      console.log('Formulario inválido o las contraseñas no coinciden');
-    }
+    // } else {
+    //   this.activar(0)
+    //   console.log('Formulario inválido o las contraseñas no coinciden');
+    // }
   }
 
   async obtenerUsuarios() {

@@ -104,7 +104,8 @@ export class ActividadPage implements OnInit {
 }
 
 obtenerDatos2(viaje:Viaje){
-  this.services.obtDataid(viaje.Id).subscribe((data:any)=>{
+  const path = 'viaje'
+  this.services.obtDataid(path, viaje.Id).subscribe((data:any)=>{
     this.Datos = data;
     console.log(data)
   })

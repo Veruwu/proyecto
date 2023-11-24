@@ -3,7 +3,8 @@ export interface Usuario {
     apellido:string,
     email:string,
     password:string
-    Id:string
+    Id:any
+    perfil: "pasajero"
 }
 
 

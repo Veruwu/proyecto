@@ -22,6 +22,7 @@ export class RegisteruserPage implements OnInit {
     email:'',
     password:'',
     Id:'',
+    perfil:'pasajero'
   }
 
   repetirContrasena: string = '';
@@ -80,6 +81,12 @@ export class RegisteruserPage implements OnInit {
       if(user){
         this.activar(1)
         loading.dismiss()
+        const id = user.user?.uid
+        this.usuario.Id = id;
+        const response = await this.services.creaUser(this.usuario, id);
+       
+        console.log(id)
+        console.log(response)
         this.router.navigate(['/tab-inicial/inicio-cliente'])
       }else{
         this.activar(0)
@@ -93,25 +100,25 @@ export class RegisteruserPage implements OnInit {
     }
 
   async onSubmit(){
-    if (this.usuario.password === this.repetirContrasena) {
+    // if (this.usuario.password === this.repetirContrasena) {
       
-      this.activar(1)
-      await this.storage.set('usuario', this.usuario);
+    //   this.activar(1)
+    //   await this.storage.set('usuario', this.usuario);
 
-      await this.obtenerUsuarios();
-      console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
+    //   await this.obtenerUsuarios();
+    //   console.log('<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>');
 
-      const id = this.services.getId();
-      this.usuario.Id = id;
-      const response = await this.services.creaUser(this.usuario, id);
+    //   const id = this.services.getId();
+    //   this.usuario.Id = id;
+    //   const response = await this.services.creaUser(this.usuario, id);
      
-      console.log(id)
+    //   console.log(id)
 
-      // this.router.navigate(['/tab-inicial/inicio-cliente'])
-    } else {
-      this.activar(0)
-      console.log('Formulario inválido o las contraseñas no coinciden');
-    }
+    //   // this.router.navigate(['/tab-inicial/inicio-cliente'])
+    // } else {
+    //   this.activar(0)
+    //   console.log('Formulario inválido o las contraseñas no coinciden');
+    // }
 }
 
 async obtenerUsuarios() {
