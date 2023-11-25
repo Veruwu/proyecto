@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { AutheticationService } from 'src/app/authetication.service';
 
+
 @Component({
   selector: 'app-perfilcliente',
   templateUrl: './perfilcliente.page.html',
@@ -12,7 +13,18 @@ export class PerfilclientePage implements OnInit {
 
   nombre:string;
 
-  constructor(private router:Router, public authService: AutheticationService,private storage:Storage) { }
+  constructor(private router:Router, public authService: AutheticationService,private storage:Storage) { 
+
+    this.authService.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+        console.log(uid)
+        console.log(email)
+        this.nombre = email || ""
+      }
+    })
+  }
 
 
   async logout(){

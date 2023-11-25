@@ -11,7 +11,7 @@ import { AutheticationService } from 'src/app/authetication.service';
 })
 export class InicioClientePage implements OnInit {
 
-    nombre:string;
+  nombre:string;
 
   constructor(private navCtrl: NavController,private storage:Storage, private ngFireAuth: AutheticationService ) {
 
@@ -21,6 +21,7 @@ export class InicioClientePage implements OnInit {
         const email = res.email
         console.log(uid)
         console.log(email)
+        this.nombre = email || ""
       }
     })
   }
