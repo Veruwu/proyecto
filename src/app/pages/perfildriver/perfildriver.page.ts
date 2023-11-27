@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { AutheticationService } from 'src/app/authetication.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { Conductor } from '../../interfaces/conductor';
 
 @Component({
   selector: 'app-perfildriver',
@@ -9,16 +11,29 @@ import { AutheticationService } from 'src/app/authetication.service';
   styleUrls: ['./perfildriver.page.scss'],
 })
 export class PerfildriverPage implements OnInit {
-
+  conductor:Conductor={
+    nombre: '',
+    apellido: '',
+    email: '',
+    password: '',
+    matricula: '',
+    Id: '',
+    perfil: 'conductor'
+  }
   nombre:string;
+  Datos: Array<any>=[];
 
-  constructor(private router:Router, public authService: AutheticationService,private storage:Storage) { 
+  constructor(private router:Router, public authService: AutheticationService,private storage:Storage, private firestore:FirestoreService) { 
     this.authService.stateUser().subscribe(res =>{
       if (res){
         const uid = res.uid
         const email = res.email
         console.log(uid)
         console.log(email)
+        this.firestore.obtDataid('conductor',uid).subscribe((data:any)=>{
+          this.conductor=data;
+          console.log(data)
+        })
         this.nombre = email || ""
       }
     })
@@ -104,7 +119,7 @@ async activar(valor:Number){
 
   async obtenerUsuario() {
     const user = await this.storage.get('usuario');
-    const driver = await this.storage.get('conductor');
+    const driver = await this.storage.get('Datos');
     if (user) {
       this.storage.remove('conductor')
       this.nombre = user.nombre + " " + user.apellido;

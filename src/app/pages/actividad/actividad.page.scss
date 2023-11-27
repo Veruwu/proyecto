@@ -97,8 +97,12 @@ ion-content {
 
 ion-card {
     --background: #0d0f36;
-    --color: #3880ff;
+    color: #3880ff;
     margin-bottom: 20px;
+}
+
+ion-card-title {
+    --color: #EDF2FA;
 }
 
 ion-list {
