@@ -28,6 +28,7 @@ export class DetalleViajePage implements OnInit {
   }
   Nombre:any;
   Apellido:any;
+  Fullname:any;
   Hasta:string;
   asientos:number;
   valor:number;
@@ -65,7 +66,8 @@ export class DetalleViajePage implements OnInit {
           this.authService.obtenerNombreUsuario(uid).subscribe((datosusuario:any) =>{
             this.Nombre = datosusuario.nombre
             this.Apellido = datosusuario.apellido
-            console.log('Nombre del usuario:', datosusuario.nombre);
+            this.Fullname = this.Nombre + " " + this.Apellido
+            console.log('Nombre del usuario:', this.Fullname);
           })
       }
     })
@@ -92,7 +94,7 @@ export class DetalleViajePage implements OnInit {
       this.confirmado = true;
     }
 
-    this.authService.tomarViaje(this.viajaso.Id, this.Nombre)
+    this.authService.tomarViaje(this.viajaso.Id, this.Fullname)
 
   }
 
