@@ -1,3 +1,5 @@
+import { Usuario } from "./usuario"
+
 export interface Conductor {
     nombre:string,
     apellido:string,
@@ -16,4 +18,5 @@ export interface Viaje {
     Asientos:any,
     Valor:any,
     Id:string
+    pasajeros?:[]
 }

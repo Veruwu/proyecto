@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Viaje } from '../../interfaces/conductor';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavParams } from '@ionic/angular';
+import { Usuario } from '../../interfaces/usuario';
+import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
   selector: 'app-detalle-viaje',
@@ -16,6 +18,7 @@ export class DetalleViajePage implements OnInit {
   confirmado: boolean = false;
 
 
+    
   viajaso:Viaje={
     Desde:'',
     Hasta:'',
@@ -23,15 +26,24 @@ export class DetalleViajePage implements OnInit {
     Valor: '',
     Id:'',
   }
+  Nombre:any;
+  Apellido:any;
   Hasta:string;
   asientos:number;
   valor:number;
   Datos: any[];
   contador:number;
-
+  uid:'';
   items: Observable<any[]>;
 
-  constructor(public services:FirestoreService, public firestore:AngularFirestore, public router:Router, public navParams: NavParams ) { 
+  constructor(
+    public services:FirestoreService, 
+    public firestore:AngularFirestore, 
+    public router:Router, 
+    public navParams: NavParams, 
+    public authService: AutheticationService,
+    ) { 
+
     // this.data = this.navParams.get('viaje');
     // console.log('F en el shat '+this.data)
     const viajito = this.services.pasarViaje()
@@ -41,9 +53,23 @@ export class DetalleViajePage implements OnInit {
       
     }
     
+    
   }
 
   ngOnInit() {
+
+    this.authService.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+          this.authService.obtenerNombreUsuario(uid).subscribe((datosusuario:any) =>{
+            this.Nombre = datosusuario.nombre
+            this.Apellido = datosusuario.apellido
+            console.log('Nombre del usuario:', datosusuario.nombre);
+          })
+      }
+    })
+
 
     this.obtenerDatos()
     // this.viaje = this.navParams.get('viaje');
@@ -65,7 +91,8 @@ export class DetalleViajePage implements OnInit {
       this.viajaso.Asientos-- 
       this.confirmado = true;
     }
-    
+
+    this.authService.tomarViaje(this.viajaso.Id, this.Nombre)
 
   }
 
@@ -79,4 +106,8 @@ export class DetalleViajePage implements OnInit {
     })
   }
   onSubmit(){}
+
+
+
+  
 }

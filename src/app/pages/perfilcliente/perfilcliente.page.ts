@@ -12,6 +12,8 @@ import { AutheticationService } from 'src/app/authetication.service';
 export class PerfilclientePage implements OnInit {
 
   nombre:string;
+  Nombre: any;
+  Apellido: any;
 
   constructor(private router:Router, public authService: AutheticationService,private storage:Storage) { 
 
@@ -35,6 +37,18 @@ export class PerfilclientePage implements OnInit {
 
   ngOnInit() {
     this.obtenerUsuario()
+    this.authService.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+          this.authService.obtenerNombreUsuario(uid).subscribe((datosusuario:any) =>{
+            this.Nombre = datosusuario.nombre
+            this.Apellido = datosusuario.apellido
+            console.log('Nombre del usuario:', datosusuario.nombre);
+          })
+      }
+    })
+    
   }
 
   onClick(ruta:string){

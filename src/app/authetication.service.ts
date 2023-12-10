@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutheticationService {
 
-  constructor(public ngFireAuth: AngularFireAuth) { }
+  constructor(
+    public ngFireAuth: AngularFireAuth,
+    private firestore: AngularFirestore
+    ) { }
 
 
   async registerUser(email:string, password:string){
@@ -32,6 +37,25 @@ export class AutheticationService {
 
   stateUser(){
     return this.ngFireAuth.authState
+  }
+
+  tomarViaje(viajeId: string, nombre: string) {
+    this.ngFireAuth.authState.subscribe(user => {
+      if (user) {
+        const userId = user.uid;
+        // Asociar el usuario al viaje en Firestore
+        this.firestore.collection('viaje').doc(viajeId).update({
+          Pasajeros: firebase.firestore.FieldValue.arrayUnion(nombre),
+        });
+      } else {
+        // El usuario no ha iniciado sesión
+      }
+    });
+  }
+
+  obtenerNombreUsuario(uid: string): Observable<any> {
+    return this.firestore.collection('pasajero').doc(uid).valueChanges()
+      
   }
 
   // async signInWithPhoneNumber(phoneNumber: string) {
