@@ -4,4 +4,4 @@
 
 ### Fotos
 
-## [Descargar APK] (https://github.com/Veruwu/proyecto/releases/tag/v1.0.1)
+## [Descargar APK](https://github.com/Veruwu/proyecto/releases/tag/v1.0.1)
