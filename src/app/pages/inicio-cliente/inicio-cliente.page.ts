@@ -16,6 +16,10 @@ export class InicioClientePage implements OnInit {
   nombre:string;
   Nombre: any;
   Apellido: any;
+  uid:any
+  Nombre2: any;
+  Apellido2: any;
+  Fullname:any;
 
   constructor(
     private navCtrl: NavController,
@@ -35,7 +39,7 @@ export class InicioClientePage implements OnInit {
     })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.obtenerUsuario()
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -48,15 +52,49 @@ export class InicioClientePage implements OnInit {
 
     this.ngFireAuth.stateUser().subscribe(res =>{
       if (res){
-        const uid = res.uid
+        this.uid = res.uid
         const email = res.email
-          this.ngFireAuth.obtenerNombreUsuario(uid).subscribe((datosusuario:any) =>{
-            this.Nombre = datosusuario.nombre
-            this.Apellido = datosusuario.apellido
-            console.log('Nombre del usuario:', datosusuario.nombre);
+        const path = 'pasajero'
+        const path2 = 'conductor'
+          this.ngFireAuth.obtenerNombreUsuario(path,this.uid).subscribe((datopasajero:any) =>{
+            this.Nombre = datopasajero.nombre
+            this.Apellido = datopasajero.apellido
+            if (this.Nombre !== undefined){
+              this.Fullname = this.Nombre + " " + this.Apellido;
+            }else{
+              this.Fullname = this.Nombre2 + " " + this.Apellido2;
+            }
+            console.log('Nombre del usuario:', datopasajero.nombre);
           })
+          this.ngFireAuth.obtenerNombreUsuario(path2,this.uid).subscribe((datodriver:any) =>{
+            this.Nombre2 = datodriver.nombre
+            this.Apellido2 = datodriver.apellido
+            if (this.Nombre !== undefined){
+              this.Fullname = this.Nombre + " " + this.Apellido;
+            }else{
+              this.Fullname = this.Nombre2 + " " + this.Apellido2;
+            }
+            console.log('Nombre del usuario:', datodriver.nombre);
+          })
+          
       }
+      // if (this.Nombre !== undefined){
+      //   this.Fullname = this.Nombre + " " + this.Apellido;
+      // }
     })
+
+    // try {
+    //   // Aquí debes tener el uid del usuario actual, por ejemplo, desde AngularFireAuth
+      
+
+    //   // Obtener datos del usuario desde la colección "usuarios"
+    //   const datosUsuario = await this.ngFireAuth.obtenerNombreYApellido(this.uid);
+
+    //   this.Nombre = datosUsuario.nombre;
+    //   this.Apellido = datosUsuario.apellido;
+    // } catch (error) {
+    //   console.log('Error al obtener los datos del usuario:', error);
+    // }
   }
 
   onSubmit(lugar:boolean) {

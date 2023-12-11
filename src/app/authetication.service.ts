@@ -53,9 +53,42 @@ export class AutheticationService {
     });
   }
 
-  obtenerNombreUsuario(uid: string): Observable<any> {
-    return this.firestore.collection('pasajero').doc(uid).valueChanges()
+  obtenerNombreUsuario(path: string ,uid: string): Observable<any> {
+    return this.firestore.collection(path).doc(uid).valueChanges()
       
+  }
+
+  obtenerUsuariosDelViaje(viajeId: string): Observable<string[]> {
+    return this.firestore.collection('viaje').doc(viajeId).valueChanges()
+      .pipe(map((viaje: any) => viaje.Pasajeros || []));
+  }
+
+  async obtenerNombreYApellido(uid: string): Promise<{ nombre: string, apellido: string }> {
+    try {
+      // Consultar la colección "usuarios"
+      const usuarioDoc = this.firestore.collection('pasajero').doc(uid).valueChanges();
+      const driveDoc = this.firestore.collection('conductor').doc(uid).valueChanges();
+
+      if (usuarioDoc) {
+        // Obtener datos del documento "usuarios"
+        const datosUsuario: any = usuarioDoc.pipe(map((data: any) => data.data()));
+        const nombre = datosUsuario.nombre;
+        const apellido = datosUsuario.apellido;
+
+        return { nombre, apellido };
+      } else {
+        // const datosUsuario: any = driveDoc.data();
+        // const nombre = datosUsuario.nombre;
+        // const apellido = datosUsuario.apellido;
+
+        // return { nombre, apellido };
+        throw new Error('No existe un documento con el UID especificado.');
+
+      }
+    } catch (error) {
+      console.error('Error al obtener datos del usuario:', error);
+      throw error;
+    }
   }
 
   // async signInWithPhoneNumber(phoneNumber: string) {

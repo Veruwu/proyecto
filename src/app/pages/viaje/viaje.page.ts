@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NavParams } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { AutheticationService } from 'src/app/authetication.service';
 import { Viaje } from 'src/app/interfaces/conductor';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -26,10 +27,14 @@ export class ViajePage implements OnInit {
   Viaje: boolean;
   Recorrido: boolean;
   sumasientos: any = null;
-
+  Pasajeros:any[];
   storageInitialized: boolean = false; 
 
-  constructor(private storage:Storage, private services:FirestoreService, private router: Router) {
+  constructor(
+    private storage:Storage, 
+    private services:FirestoreService, 
+    private router: Router,
+    private authservice:AutheticationService) {
     this.Recorrido = false;
     this.sumasientos = this.router.getCurrentNavigation()?.extras?.state;
     console.log(this.sumasientos);
@@ -53,7 +58,15 @@ export class ViajePage implements OnInit {
     const id = this.services.getId();
     this.viaje.Id = id;
     const response = await this.services.creatDoc(this.viaje, id);
-   
+    
+
+
+      this.authservice.obtenerUsuariosDelViaje(id).subscribe(usuarios => {
+        this.Pasajeros = usuarios;
+        console.log('Usuarios asociados al viaje:', usuarios);
+        // Puedes mostrar la lista de usuarios en tu interfaz de usuario
+      });
+
     console.log(id)
   }
 

@@ -63,7 +63,8 @@ export class DetalleViajePage implements OnInit {
       if (res){
         const uid = res.uid
         const email = res.email
-          this.authService.obtenerNombreUsuario(uid).subscribe((datosusuario:any) =>{
+        const path = 'pasajero'
+          this.authService.obtenerNombreUsuario(path, uid).subscribe((datosusuario:any) =>{
             this.Nombre = datosusuario.nombre
             this.Apellido = datosusuario.apellido
             this.Fullname = this.Nombre + " " + this.Apellido
