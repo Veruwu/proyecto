@@ -1,6 +1,14 @@
 # Fastic
 
 ### Funcionalidades
+* Inicio sesión
+* Registrarse
+* Recuperar contraseña
+* Cerrar sesión
+* Crear viajes
+* Finalizar viajes
+* Solicitar viaje
+* Finalizar viajes solicitados
 
 ### Fotos
 
