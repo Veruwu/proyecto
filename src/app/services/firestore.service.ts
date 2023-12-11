@@ -5,6 +5,10 @@ import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
 import { Viaje, Conductor } from '../interfaces/conductor';
 import { Usuario } from '../interfaces/usuario';
 import { AlertController } from '@ionic/angular';
+import firebase from 'firebase/compat/app'; // Import the necessary package
+import { Observable, map } from 'rxjs';
+
+
 
 
 
@@ -17,6 +21,10 @@ export class FirestoreService {
   editviaje:Viaje;
 
   constructor(private firestone:AngularFirestore, private alertController: AlertController) { }
+
+  getViajeById(id: string) {
+    return this.firestone.collection('viaje').doc(id).valueChanges();
+  }
 
   getId(){
     return this.firestone.createId();
@@ -82,5 +90,6 @@ export class FirestoreService {
     return this.firestone.collection(path).doc<tipo>(id).valueChanges()
 
   }
+
 
 }

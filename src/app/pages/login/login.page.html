@@ -1,4 +1,4 @@
-<app-encabezado titulo="Log in"></app-encabezado>
+<app-encabezado titulo="Ingresar"></app-encabezado>
 
 <ion-content class="ion-padding">
   <form [formGroup]="logForm" novalidate #miformulario="ngForm" (ngSubmit)="onSubmit()">
@@ -21,8 +21,8 @@
       <ion-row>
         <ion-col>
           <ion-button (click)="login()" type="submit" expand="block"
-            [disabled]="miformulario.invalid">Sign In</ion-button>
-          <a [routerLink]="['/forgotpass']" class="small-text" style="color: #294380;">Forgot Password?</a>
+            [disabled]="miformulario.invalid">Ingresar</ion-button>
+          <a [routerLink]="['/forgotpass']" class="small-text" style="color: #294380;">¿Olvidó la contraseña?</a>
         </ion-col>
       </ion-row>
     </div>

@@ -19,6 +19,15 @@ export class ActividadPage implements OnInit {
   
   viajes: any[];
 
+  viajaso:Viaje={
+    Desde:'',
+    Hasta:'',
+    Asientos: '',
+    Valor: '',
+    Id:'',
+  }
+
+
   Datos: any[];
   Desde:string;
   Hasta:string;
@@ -34,10 +43,18 @@ export class ActividadPage implements OnInit {
       this.viaje = data;
     });
     console.log(this.viajes)
+
+    const viajito = this.services.pasarViaje()
+    console.log('se muestra el viaje', viajito)
+    if (viajito !== undefined){
+      this.viajaso = viajito
+      
+    }
   }
 
   ngOnInit() {
     this.obtenerViaje() 
+
   }
 
 

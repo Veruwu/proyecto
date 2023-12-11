@@ -22,6 +22,8 @@ export class PerfildriverPage implements OnInit {
   }
   nombre:string;
   Datos: Array<any>=[];
+  Nombre: any;
+  Apellido: any;
 
   constructor(private router:Router, public authService: AutheticationService,private storage:Storage, private firestore:FirestoreService) { 
     this.authService.stateUser().subscribe(res =>{
@@ -48,6 +50,18 @@ export class PerfildriverPage implements OnInit {
 
   ngOnInit() {
     this.obtenerUsuario()
+    this.authService.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+        const path = 'conductor'
+          this.authService.obtenerNombreUsuario(path,uid).subscribe((datosusuario:any) =>{
+            this.Nombre = datosusuario.nombre
+            this.Apellido = datosusuario.apellido
+            console.log('Nombre del usuario:', datosusuario.nombre);
+          })
+      }
+    })
   }
 
   onClick(ruta:string){

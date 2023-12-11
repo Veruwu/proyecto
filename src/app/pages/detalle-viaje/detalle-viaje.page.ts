@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Viaje } from '../../interfaces/conductor';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavParams } from '@ionic/angular';
+import { Usuario } from '../../interfaces/usuario';
+import { AutheticationService } from 'src/app/authetication.service';
 
 @Component({
   selector: 'app-detalle-viaje',
@@ -14,8 +16,8 @@ import { NavParams } from '@ionic/angular';
 })
 export class DetalleViajePage implements OnInit {
   confirmado: boolean = false;
-
-
+  mostrar : boolean = false;
+    
   viajaso:Viaje={
     Desde:'',
     Hasta:'',
@@ -23,15 +25,24 @@ export class DetalleViajePage implements OnInit {
     Valor: '',
     Id:'',
   }
+  Nombre:any;
+  Apellido:any;
+  Fullname:any;
   Hasta:string;
   asientos:number;
   valor:number;
   Datos: any[];
-  contador:number;
-
+  uid:'';
   items: Observable<any[]>;
 
-  constructor(public services:FirestoreService, public firestore:AngularFirestore, public router:Router, public navParams: NavParams ) { 
+  constructor(
+    public services:FirestoreService, 
+    public firestore:AngularFirestore, 
+    public router:Router, 
+    public navParams: NavParams, 
+    public authService: AutheticationService,
+    ) { 
+
     // this.data = this.navParams.get('viaje');
     // console.log('F en el shat '+this.data)
     const viajito = this.services.pasarViaje()
@@ -41,11 +52,27 @@ export class DetalleViajePage implements OnInit {
       
     }
     
+    
   }
 
   ngOnInit() {
 
-    this.obtenerDatos()
+    this.authService.stateUser().subscribe(res =>{
+      if (res){
+        const uid = res.uid
+        const email = res.email
+        const path = 'pasajero'
+          this.authService.obtenerNombreUsuario(path, uid).subscribe((datosusuario:any) =>{
+            this.Nombre = datosusuario.nombre
+            this.Apellido = datosusuario.apellido
+            this.Fullname = this.Nombre + " " + this.Apellido
+            console.log('Nombre del usuario:', this.Fullname);
+          })
+      }
+    })
+
+
+
     // this.viaje = this.navParams.get('viaje');
 
     // console.log('F en el shat '+this.viaje)
@@ -59,16 +86,20 @@ export class DetalleViajePage implements OnInit {
     // }
   }
 
-  async onClick(ruta:string) {
-    this.router.navigate(['/'+ruta])
+  async onClick() {
     if(this.viajaso.Asientos! > 0){
       this.viajaso.Asientos-- 
       this.confirmado = true;
+      this.mostrar = true;
     }
-    
+
+    this.authService.tomarViaje(this.viajaso.Id, this.Fullname)
 
   }
 
+  async onClick2(ruta:string) {
+    this.router.navigate(['/'+ruta])
+  }
 
   obtenerDatos(){
     this.services.obtData().subscribe((data:any)=>{
@@ -78,5 +109,19 @@ export class DetalleViajePage implements OnInit {
 
     })
   }
+
+  obtenerviaje(id:string){
+    this.services.getViajeById(id).subscribe((data:any)=>{
+      if(data){
+      }else{
+        this.viajaso.Id = '';
+      } 
+    });
+    }
+
   onSubmit(){}
+
+
+
+  
 }

@@ -36,7 +36,7 @@
 
   <div *ngIf="Viaje">
     <ion-item lines="none" class="type">
-      <ion-icon size="large" name="car-outline"></ion-icon>
+      <ion-icon size="large" name="car-outline" color="#0d0f36"></ion-icon>
       <ion-label>
         <p>
           <ion-text>
@@ -49,39 +49,28 @@
     <ion-row class="ion-padding">
       <ion-col size="6">
         <ion-item lines="full">
-          <ion-icon slot="start" name="arrow-forward-outline"></ion-icon>
+          <ion-icon slot="start" name="arrow-forward-outline" color="#0d0f36"></ion-icon>
           <ion-label>{{ viaje.Desde }}</ion-label>
         </ion-item>
       </ion-col>
 
       <ion-col size="6">
         <ion-item lines="full">
-          <ion-icon slot="start" name="arrow-down-outline"></ion-icon>
+          <ion-icon slot="start" name="arrow-down-outline" color="#0d0f36"></ion-icon>
           <ion-label>{{ viaje.Hasta }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
-
-
-    <ion-item lines="full" >
-      <ion-icon slot="start" name="person"></ion-icon>
-      <ion-label>Olivia Flores</ion-label>
-    </ion-item>
     
-    <ion-item lines="full">
-      <ion-icon slot="start" name="person"></ion-icon>
-      <ion-label>Juan Lopez</ion-label>
+    <ion-list *ngFor="let items of Pasajeros">
+      <ion-item lines="full" >
+      <ion-icon slot="start" name="person" color="#0d0f36"></ion-icon>
+      <ion-label>{{items}}</ion-label>
     </ion-item>
-
-    <ion-item lines="full">
-      <ion-icon slot="start" name="person-add"></ion-icon>
-      <ion-label>Agregar pasajero</ion-label>
-    </ion-item>
+    </ion-list>
     
-    <ion-item lines="full">
-      <ion-icon slot="start" name="person-add"></ion-icon>
-      <ion-label>Agregar pasajero</ion-label>
-    </ion-item>
+    
+
     
     <div *ngIf="Recorrido" class="ion-padding">
 
@@ -89,7 +78,7 @@
       <ion-progress-bar class="bar" color="primary" value="0.1" buffer="0.1" ></ion-progress-bar>
       </ion-item>
 
-      <ion-button expand="block" class="boton" color="primary" (click)="CancelarViaje()">Terminar Viaje</ion-button>
+      <ion-button expand="block" class="boton" (click)="CancelarViaje()">Terminar Viaje</ion-button>
 
     </div>
 
@@ -97,7 +86,7 @@
 
       <ion-row class="ion-padding">
         <ion-col size="12">
-          <ion-button expand="block" class="boton" color="primary" (click)="IniciarViaje()">Iniciar Viaje</ion-button>
+          <ion-button expand="block" class="boton" (click)="IniciarViaje()">Iniciar Viaje</ion-button>
         </ion-col>
         <ion-col size="12">
         <ion-button expand="block" class="boton" color="danger" (click)="CancelarViaje()">Cancelar Viaje</ion-button>
