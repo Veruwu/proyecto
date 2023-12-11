@@ -16,8 +16,7 @@ import { AutheticationService } from 'src/app/authetication.service';
 })
 export class DetalleViajePage implements OnInit {
   confirmado: boolean = false;
-
-
+  mostrar : boolean = false;
     
   viajaso:Viaje={
     Desde:'',
@@ -87,17 +86,20 @@ export class DetalleViajePage implements OnInit {
     // }
   }
 
-  async onClick(ruta:string) {
-    this.router.navigate(['/'+ruta])
+  async onClick() {
     if(this.viajaso.Asientos! > 0){
       this.viajaso.Asientos-- 
       this.confirmado = true;
+      this.mostrar = true;
     }
 
     this.authService.tomarViaje(this.viajaso.Id, this.Fullname)
 
   }
 
+  async onClick2(ruta:string) {
+    this.router.navigate(['/'+ruta])
+  }
 
   obtenerDatos(){
     this.services.obtData().subscribe((data:any)=>{
@@ -107,6 +109,16 @@ export class DetalleViajePage implements OnInit {
 
     })
   }
+
+  obtenerviaje(id:string){
+    this.services.getViajeById(id).subscribe((data:any)=>{
+      if(data){
+      }else{
+        this.viajaso.Id = '';
+      } 
+    });
+    }
+
   onSubmit(){}
 
 

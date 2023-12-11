@@ -22,6 +22,10 @@ export class FirestoreService {
 
   constructor(private firestone:AngularFirestore, private alertController: AlertController) { }
 
+  getViajeById(id: string) {
+    return this.firestone.collection('viaje').doc(id).valueChanges();
+  }
+
   getId(){
     return this.firestone.createId();
   }
