@@ -36,8 +36,7 @@ export class ViajePage implements OnInit {
     private router: Router,
     private authservice:AutheticationService) {
     this.Recorrido = false;
-    this.sumasientos = this.router.getCurrentNavigation()?.extras?.state;
-    console.log(this.sumasientos);
+    this.sumasientos = 1-this.viaje.Asientos;
    }
 
   async ngOnInit() {
@@ -63,6 +62,7 @@ export class ViajePage implements OnInit {
 
       this.authservice.obtenerUsuariosDelViaje(id).subscribe(usuarios => {
         this.Pasajeros = usuarios;
+        this.viaje.Asientos -= usuarios.length;
         console.log('Usuarios asociados al viaje:', usuarios);
         // Puedes mostrar la lista de usuarios en tu interfaz de usuario
       });

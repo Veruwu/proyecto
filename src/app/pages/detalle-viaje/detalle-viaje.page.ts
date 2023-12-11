@@ -33,7 +33,6 @@ export class DetalleViajePage implements OnInit {
   asientos:number;
   valor:number;
   Datos: any[];
-  contador:number;
   uid:'';
   items: Observable<any[]>;
 
@@ -74,7 +73,7 @@ export class DetalleViajePage implements OnInit {
     })
 
 
-    this.obtenerDatos()
+
     // this.viaje = this.navParams.get('viaje');
 
     // console.log('F en el shat '+this.viaje)
