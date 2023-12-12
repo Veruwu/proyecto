@@ -17,7 +17,7 @@
   <div class="ion-padding" class="perro">
   <div *ngIf="mostrar" >
     <ion-list *ngFor="let item of Datos">
-      <ion-card button="true" [routerLink]="['/detalle-viaje']" (click)="mostrarviajecito(item)">
+      <ion-card button="true" [routerLink]="['/detalle-viaje']" (click)="mostrarviajecito(item)" [ngClass]="{'disabled': viajeConfirmado}">
         <ion-card-header>
           <ion-card-title>{{item.Desde}} {{" a "}} {{item.Hasta}}</ion-card-title>
           <ion-card-subtitle>Ingresar al viaje.. </ion-card-subtitle>

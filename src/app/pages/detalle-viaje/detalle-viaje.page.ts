@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NavParams } from '@ionic/angular';
 import { Usuario } from '../../interfaces/usuario';
 import { AutheticationService } from 'src/app/authetication.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-detalle-viaje',
@@ -34,6 +35,7 @@ export class DetalleViajePage implements OnInit {
   Datos: any[];
   uid:'';
   items: Observable<any[]>;
+  viajeConfirmado: boolean = false;
 
   constructor(
     public services:FirestoreService, 
@@ -41,6 +43,7 @@ export class DetalleViajePage implements OnInit {
     public router:Router, 
     public navParams: NavParams, 
     public authService: AutheticationService,
+    private storage:Storage,
     ) { 
 
     // this.data = this.navParams.get('viaje');
@@ -55,7 +58,9 @@ export class DetalleViajePage implements OnInit {
     
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    await this.storage.create()
 
     this.authService.stateUser().subscribe(res =>{
       if (res){
@@ -86,12 +91,17 @@ export class DetalleViajePage implements OnInit {
     // }
   }
 
-  async onClick() {
-    if(this.viajaso.Asientos! > 0){
-      this.viajaso.Asientos-- 
-      this.confirmado = true;
-      this.mostrar = true;
-    }
+  async onClick(ruta:string) {
+    this.router.navigate(['/'+ruta])
+    // if(this.viajaso.Asientos! > 0){
+    //   this.viajaso.Asientos-- 
+    //   this.confirmado = true;
+    // }
+    this.storage.set('miViaje',this.viajaso);
+    
+    this.viajeConfirmado = true;
+    this.storage.set('viajeConfirmado', this.viajeConfirmado)
+    console.log(this.viajeConfirmado)
 
     this.authService.tomarViaje(this.viajaso.Id, this.Fullname)
 

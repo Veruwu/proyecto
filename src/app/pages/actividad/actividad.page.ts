@@ -38,6 +38,7 @@ export class ActividadPage implements OnInit {
     Valor: null,
     Id:'',
   }
+  viajeConfirmado: any;
   constructor(private storage:Storage,private navCtrl:NavController, private services:FirestoreService, private firestore:AngularFirestore,) { 
       this.services.obtData().subscribe((data:any)=>{
       this.viaje = data;
@@ -52,8 +53,11 @@ export class ActividadPage implements OnInit {
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.obtenerViaje() 
+    await this.storage.create();
+    this.viajeConfirmado = await this.storage.get('viajeConfirmado') || false;
+    console.log('viaje confirmado', this.viajeConfirmado)
 
   }
 

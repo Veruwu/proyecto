@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NavController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { AutheticationService } from 'src/app/authetication.service';
-
+import { Viaje } from 'src/app/interfaces/conductor';
 
 
 @Component({
@@ -12,6 +13,25 @@ import { AutheticationService } from 'src/app/authetication.service';
   styleUrls: ['./inicio-cliente.page.scss'],
 })
 export class InicioClientePage implements OnInit {
+  pasajero: boolean = true;
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
+    this.platform.ready().then(() => {
+      location.reload();
+    });
+  }
+
+  viajeActual: Viaje={
+    Desde: '',
+    Hasta: '',
+    Asientos: 0,
+    Valor: 0,
+    Id: ''
+  };
+
 
   nombre:string;
   Nombre: any;
@@ -25,7 +45,9 @@ export class InicioClientePage implements OnInit {
     private navCtrl: NavController,
     private storage:Storage, 
     private ngFireAuth: AutheticationService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private platform: Platform,
     ) {
 
     this.ngFireAuth.stateUser().subscribe(res =>{
@@ -82,6 +104,10 @@ export class InicioClientePage implements OnInit {
       //   this.Fullname = this.Nombre + " " + this.Apellido;
       // }
     })
+    this.storage.get('miViaje').then((viaje)=>{
+      this.viajeActual = viaje;
+      console.log(this.viajeActual)
+    })
 
     // try {
     //   // Aquí debes tener el uid del usuario actual, por ejemplo, desde AngularFireAuth
@@ -119,6 +145,16 @@ export class InicioClientePage implements OnInit {
       console.log('no se encontraron usuarios ni conductores')
     }
   }
+
+  async onClick() {
+    await this.storage.remove('miViaje')
+      this.storage.set('viajeConfirmado', false)
+      this.platform.ready().then(() => {
+        location.reload();
+      });
+      this.router.navigate(['/tab-inicial/inicio-cliente']);
+
+    }
 
 
 }

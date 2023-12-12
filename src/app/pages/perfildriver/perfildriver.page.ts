@@ -92,7 +92,7 @@ public alertButtons = [
     role: 'cancel',
   },
   {
-    text: 'Yes',
+    text: 'Sí',
     cssClass: 'alert-button-confirm',
     role: 'confirm',
     

@@ -6,7 +6,7 @@ import { Viaje, Conductor } from '../interfaces/conductor';
 import { Usuario } from '../interfaces/usuario';
 import { AlertController } from '@ionic/angular';
 import firebase from 'firebase/compat/app'; // Import the necessary package
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 
 
@@ -16,11 +16,17 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class FirestoreService {
+  private viajeActualSource = new BehaviorSubject<Viaje | null>(null);
+  currentViaje = this.viajeActualSource.asObservable();
 
 
   editviaje:Viaje;
 
   constructor(private firestone:AngularFirestore, private alertController: AlertController) { }
+
+  changeViaje(viaje: Viaje) {
+    this.viajeActualSource.next(viaje);
+  }
 
   getViajeById(id: string) {
     return this.firestone.collection('viaje').doc(id).valueChanges();

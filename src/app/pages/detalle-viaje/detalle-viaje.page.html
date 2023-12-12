@@ -2,43 +2,22 @@
 
 <ion-content class="ion-padding">
 
-  <div *ngIf="viajaso.Id != '' ">
-    <div *ngIf="!mostrar" class="ion-padding">
-      <ion-list class="ion-padding">
-        <ion-label>
-          <h2>Viaje</h2>
-          <p>Origen: {{viajaso.Desde}}</p>
-          <p>Destino: {{viajaso.Hasta}}</p>
-          <p>Valor: {{viajaso.Valor}}</p>
-          <p>Asientos Disponibles: {{viajaso.Asientos}}</p>
-          <!-- <p>{{viajaso.Id}}</p> -->
-        </ion-label>
-      </ion-list>
-      <div class="ion-padding">
-        <ion-button expand="full" (click)="onClick()" [disabled]="confirmado">Confirmar Viaje</ion-button>
-      </div>
-
-    </div>
-    
-    <div *ngIf="mostrar" class="ion-padding">
-
-      <ion-list class="ion-padding">
-        <ion-label>
-          <h2 class="ion-padding" >viaje en proceso</h2>
-          <ion-progress-bar class="bar" color="primary" value="0.1" buffer="0.1" ></ion-progress-bar>
-        </ion-label>
-      </ion-list >
-
-      <ion-button expand="full" (click)="obtenerviaje(viajaso.Id)">refrescar</ion-button>
-    </div>
-  </div>
-
-  <div *ngIf="viajaso.Id == '' ">
+  <div class="ion-padding">
     <ion-list class="ion-padding">
       <ion-label>
-        <h2>viaje terminado</h2>
+        <h2>Viaje</h2>
+        <p>Origen: {{viajaso.Desde}}</p>
+        <p>Destino: {{viajaso.Hasta}}</p>
+        <p>Valor: {{viajaso.Valor}}</p>
+        <p>Asientos Disponibles: {{viajaso.Asientos}}</p>
+
+        <!-- <p>{{viajaso.Id}}</p> -->
       </ion-label>
-     </ion-list>
-    <ion-button expand="full" (click)="onClick2('/tab-inicial/inicio-cliente')">finalizar viaje</ion-button>
+    </ion-list>
+    
+  </div>
+
+  <div class="ion-padding">
+    <ion-button expand="full" (click)="onClick('/tab-inicial/inicio-cliente')" [disabled]="confirmado">Confirmar Viaje</ion-button>
   </div>
 </ion-content>
